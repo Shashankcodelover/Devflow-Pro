@@ -1,234 +1,135 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { 
-  CheckCircle2, 
-  Clock, 
-  AlertTriangle, 
-  Layers, 
-  ArrowRight, 
-  Plus, 
-  Activity, 
-  Sparkles 
-} from 'lucide-react'
-import { useTaskStore } from '../store/useTaskStore'
+import { useMemo, useCallback, useEffect } from 'react'
+import { io } from 'socket.io-client'
+import { useTaskContext } from '../store/TaskContext'
+import type { Task, NewTask } from '../store/taskReducer'
+import TaskForm from '../components/TaskForm'
+import SessionTimer from '../components/SessionTimer'
 
-interface DashboardProps {
-  onOpenTaskModal: () => void
-}
+function Dashboard() {
+  const { state, dispatch } = useTaskContext()
+  const { tasks, filter, loading } = state
 
-export const Dashboard: React.FC<DashboardProps> = ({ onOpenTaskModal }) => {
-  const { tasks, fetchTasks, toggleTaskStatus } = useTaskStore()
-
+  // Load initial tasks
   useEffect(() => {
-    fetchTasks()
-  }, [])
+    async function loadTasks() {
+      dispatch({ type: 'SET_LOADING', payload: true })
+      await new Promise(r => setTimeout(r, 800))
+      dispatch({ type: 'LOAD_TASKS', payload: [
+        { id: 1, title: 'Learn React',    status: 'pending', priority: 'high',   createdAt: new Date() },
+        { id: 2, title: 'Build REST API', status: 'done',    priority: 'high',   createdAt: new Date() },
+        { id: 3, title: 'Setup MongoDB',  status: 'pending', priority: 'medium', createdAt: new Date() }
+      ]})
+    }
+    loadTasks()
+  }, [dispatch])
 
-  const totalCount = tasks.length
-  const completedCount = tasks.filter((t) => t.status === 'done').length
-  const pendingCount = tasks.filter((t) => t.status === 'pending').length
-  const highPriorityCount = tasks.filter((t) => t.priority === 'high' && t.status === 'pending').length
-  const completionRate = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0
+  // Socket.io — real-time updates
+  useEffect(() => {
+    const socket = io('http://localhost:3001')
 
-  const recentTasks = [...tasks].slice(0, 5)
+    socket.on('connect', () => {
+      console.log('Socket connected:', socket.id)
+    })
+
+    // When ANY user creates a task — update UI automatically
+    socket.on('task:new', (newTask: Task) => {
+      console.log('Real-time task received:', newTask.title)
+      dispatch({ type: 'ADD_TASK', payload: newTask })
+    })
+
+    // Cleanup — disconnect when Dashboard unmounts
+    return () => {
+      socket.disconnect()
+      console.log('Socket disconnected')
+    }
+  }, [dispatch])
+
+  const addTask = useCallback((title: string, priority: string): void => {
+    const newTask: NewTask = {
+      title,
+      priority: priority as Task['priority'],
+      status: 'pending'
+    }
+    dispatch({
+      type: 'ADD_TASK',
+      payload: {
+        ...newTask,
+        id: Math.floor(Math.random() * 1000),
+        createdAt: new Date()
+      }
+    })
+  }, [dispatch])
+
+  const visibleTasks = useMemo(() =>
+    tasks.filter(t => filter === 'all' || t.status === filter)
+  , [tasks, filter])
+
+  const stats = useMemo(() => ({
+    total: tasks.length,
+    done: tasks.filter(t => t.status === 'done').length,
+    pending: tasks.filter(t => t.status === 'pending').length
+  }), [tasks])
 
   return (
-    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px', display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      
-      {/* Hero Welcome Banner */}
-      <div className="glass-panel" style={{
-        padding: '32px',
-        background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%)',
-        border: '1px solid rgba(168, 85, 247, 0.25)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        gap: '20px'
-      }}>
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#a855f7', fontSize: '0.88rem', fontWeight: 600, marginBottom: '6px' }}>
-            <Sparkles size={18} />
-            <span>Developer Workflow Dashboard</span>
-          </div>
-          <h1 style={{ fontSize: '2rem', fontWeight: 700, color: '#fff', margin: 0 }}>
-            Welcome back to DevFlow Pro
-          </h1>
-          <p style={{ color: '#9ca3af', marginTop: '6px', fontSize: '1rem' }}>
-            You have <strong style={{ color: '#f3f4f6' }}>{pendingCount} pending tasks</strong> requiring your attention today.
-          </p>
-        </div>
+    <div style={{ padding: '20px' }}>
+      <h1>Dashboard</h1>
+      <SessionTimer />
 
-        <button onClick={onOpenTaskModal} className="btn btn-primary" style={{ padding: '12px 22px', fontSize: '0.95rem' }}>
-          <Plus size={20} />
-          <span>Create Task</span>
-        </button>
+      {/* Stats */}
+      <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
+        <span>Total: {stats.total}</span>
+        <span style={{ color: 'green' }}>Done: {stats.done}</span>
+        <span style={{ color: 'orange' }}>Pending: {stats.pending}</span>
       </div>
 
-      {/* Metric Cards Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' }}>
-        
-        {/* Total Tasks */}
-        <div className="glass-panel" style={{ padding: '24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <span style={{ color: '#9ca3af', fontSize: '0.9rem', fontWeight: 600 }}>Total Tasks</span>
-            <div style={{ padding: '10px', borderRadius: '10px', background: 'rgba(59, 130, 246, 0.15)', color: '#3b82f6' }}>
-              <Layers size={20} />
-            </div>
-          </div>
-          <div style={{ fontSize: '2.2rem', fontWeight: 800, color: '#fff' }}>{totalCount}</div>
-          <div style={{ color: '#6b7280', fontSize: '0.8rem', marginTop: '4px' }}>Active in current sprint</div>
-        </div>
+      <TaskForm onAddTask={addTask} />
 
-        {/* Completed */}
-        <div className="glass-panel" style={{ padding: '24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <span style={{ color: '#9ca3af', fontSize: '0.9rem', fontWeight: 600 }}>Completed</span>
-            <div style={{ padding: '10px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>
-              <CheckCircle2 size={20} />
-            </div>
-          </div>
-          <div style={{ fontSize: '2.2rem', fontWeight: 800, color: '#10b981' }}>{completedCount}</div>
-          <div style={{ color: '#6b7280', fontSize: '0.8rem', marginTop: '4px' }}>{completionRate}% completion rate</div>
-        </div>
-
-        {/* Pending */}
-        <div className="glass-panel" style={{ padding: '24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <span style={{ color: '#9ca3af', fontSize: '0.9rem', fontWeight: 600 }}>In Progress</span>
-            <div style={{ padding: '10px', borderRadius: '10px', background: 'rgba(168, 85, 247, 0.15)', color: '#a855f7' }}>
-              <Clock size={20} />
-            </div>
-          </div>
-          <div style={{ fontSize: '2.2rem', fontWeight: 800, color: '#a855f7' }}>{pendingCount}</div>
-          <div style={{ color: '#6b7280', fontSize: '0.8rem', marginTop: '4px' }}>Awaiting code completion</div>
-        </div>
-
-        {/* High Priority */}
-        <div className="glass-panel" style={{ padding: '24px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <span style={{ color: '#9ca3af', fontSize: '0.9rem', fontWeight: 600 }}>High Priority</span>
-            <div style={{ padding: '10px', borderRadius: '10px', background: 'rgba(244, 63, 94, 0.15)', color: '#f43f5e' }}>
-              <AlertTriangle size={20} />
-            </div>
-          </div>
-          <div style={{ fontSize: '2.2rem', fontWeight: 800, color: '#f43f5e' }}>{highPriorityCount}</div>
-          <div style={{ color: '#6b7280', fontSize: '0.8rem', marginTop: '4px' }}>Urgent tasks remaining</div>
-        </div>
-
+      {/* Filter buttons */}
+      <div style={{ marginBottom: '16px', display: 'flex', gap: '8px' }}>
+        {['all', 'pending', 'done'].map(f => (
+          <button key={f}
+            onClick={() => dispatch({ type: 'SET_FILTER', payload: f })}
+            style={{
+              padding: '6px 14px', borderRadius: '20px',
+              border: '1px solid #ccc',
+              background: filter === f ? '#534AB7' : 'white',
+              color: filter === f ? 'white' : 'black',
+              cursor: 'pointer'
+            }}
+          >{f.toUpperCase()}</button>
+        ))}
       </div>
 
-      {/* Main Grid: Recent Tasks & Progress Bar */}
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '24px' }}>
-        
-        {/* Recent Tasks List */}
-        <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff' }}>Recent Tasks</h3>
-            <Link to="/tasks" style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#a855f7', fontSize: '0.88rem', textDecoration: 'none', fontWeight: 600 }}>
-              <span>View All</span>
-              <ArrowRight size={16} />
-            </Link>
-          </div>
+      {loading && <p>Loading tasks...</p>}
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            {recentTasks.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '30px', color: '#9ca3af' }}>No tasks created yet.</div>
-            ) : (
-              recentTasks.map((task) => (
-                <div
-                  key={task.id}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '12px 16px',
-                    borderRadius: '10px',
-                    background: 'rgba(15, 17, 23, 0.5)',
-                    border: '1px solid rgba(255, 255, 255, 0.05)',
-                    transition: 'all 0.15s ease'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <button
-                      onClick={() => toggleTaskStatus(task.id)}
-                      style={{
-                        background: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
-                        color: task.status === 'done' ? '#10b981' : '#6b7280'
-                      }}
-                    >
-                      <CheckCircle2 size={22} />
-                    </button>
-                    <div>
-                      <div style={{
-                        color: task.status === 'done' ? '#9ca3af' : '#f3f4f6',
-                        textDecoration: task.status === 'done' ? 'line-through' : 'none',
-                        fontWeight: 500
-                      }}>
-                        {task.title}
-                      </div>
-                      <div style={{ fontSize: '0.75rem', color: '#6b7280', marginTop: '2px' }}>
-                        ID #{task.id}
-                      </div>
-                    </div>
-                  </div>
-
-                  <span className={`badge badge-${task.priority}`}>
-                    {task.priority}
-                  </span>
-                </div>
-              ))
-            )}
-          </div>
+      {/* Task list */}
+      {visibleTasks.map(task => (
+        <div key={task.id} style={{
+          padding: '12px 14px', marginBottom: '8px',
+          border: '1px solid #ccc', borderRadius: '8px',
+          display: 'flex', alignItems: 'center', gap: '10px'
+        }}>
+          <span>{task.status === 'done' ? '✅' : '⬜'}</span>
+          <strong style={{ flex: 1 }}>{task.title}</strong>
+          <span style={{ fontSize: '12px', color: 'gray' }}>
+            [{task.priority.toUpperCase()}]
+          </span>
+          {task.status !== 'done' && (
+            <button
+              onClick={() => dispatch({ type: 'MARK_DONE', payload: task.id })}
+              style={{ padding: '4px 10px', cursor: 'pointer' }}>
+              Mark Done
+            </button>
+          )}
+          <button
+            onClick={() => dispatch({ type: 'DELETE_TASK', payload: task.id })}
+            style={{ color: 'red', background: 'none', border: 'none', cursor: 'pointer' }}>
+            Delete
+          </button>
         </div>
-
-        {/* Sprint Completion Gauge & Activity Feed */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          
-          {/* Progress Box */}
-          <div className="glass-panel" style={{ padding: '24px' }}>
-            <h3 style={{ fontSize: '1.05rem', fontWeight: 600, color: '#fff', marginBottom: '16px' }}>Sprint Progress</h3>
-            
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-              <span style={{ fontSize: '0.85rem', color: '#9ca3af' }}>Completion Rate</span>
-              <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#a855f7' }}>{completionRate}%</span>
-            </div>
-
-            <div style={{ height: '10px', width: '100%', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '5px', overflow: 'hidden' }}>
-              <div style={{
-                height: '100%',
-                width: `${completionRate}%`,
-                background: 'linear-gradient(90deg, #a855f7 0%, #10b981 100%)',
-                borderRadius: '5px',
-                transition: 'width 0.5s ease'
-              }} />
-            </div>
-          </div>
-
-          {/* Activity Feed */}
-          <div className="glass-panel" style={{ padding: '24px', flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-              <Activity size={18} style={{ color: '#3b82f6' }} />
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, color: '#fff' }}>Activity Log</h3>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.85rem', color: '#9ca3af' }}>
-              <div style={{ paddingLeft: '12px', borderLeft: '2px solid #a855f7' }}>
-                <div style={{ color: '#f3f4f6', fontWeight: 500 }}>System initialized</div>
-                <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Connected to Express API</div>
-              </div>
-              <div style={{ paddingLeft: '12px', borderLeft: '2px solid #3b82f6' }}>
-                <div style={{ color: '#f3f4f6', fontWeight: 500 }}>{tasks.length} tasks synced</div>
-                <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>In-memory store synced</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
+      ))}
     </div>
   )
 }
+
+export default Dashboard
