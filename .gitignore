@@ -26,3 +26,10 @@ dist-ssr
 node_modules/
 dist/
 .env
+
+# Legacy root scratch files
+tasks.js
+debounce.js
+async.js
+CHANGELOG_DAILY.md
+
