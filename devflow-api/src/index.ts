@@ -1,0 +1,85 @@
+import express from 'express'
+import { createServer } from 'http'
+import { Server } from 'socket.io'
+import cors from 'cors'
+import helmet from 'helmet'
+import morgan from 'morgan'
+import cookieParser from 'cookie-parser'
+import dotenv from 'dotenv'
+import taskRoutes from './routes/taskRoutes'
+import authRoutes from './routes/authRoutes'
+import { errorHandler } from './middleware/errorHandler'
+
+dotenv.config()
+
+const app = express()
+const httpServer = createServer(app)
+// createServer wraps Express app in Node HTTP server
+// Socket.io needs direct access to HTTP server
+// not just the Express app
+
+const io = new Server(httpServer, {
+  cors: {
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST']
+  }
+})
+// Socket.io server attached to HTTP server
+// cors allows React frontend to connect
+
+const PORT = process.env.PORT || 3001
+
+// Middleware
+app.use(helmet())
+app.use(cors({ origin: 'http://localhost:5173' }))
+app.use(morgan('dev'))
+app.use(express.json())
+app.use(cookieParser())
+
+// Routes
+app.use('/api/tasks', taskRoutes)
+app.use('/api/auth', authRoutes)
+
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() })
+})
+
+// Socket.io connection handling
+io.on('connection', (socket) => {
+  console.log(`User connected: ${socket.id}`)
+  // socket.id = unique ID for this connection
+  // every browser tab gets different socket.id
+
+  // Join a room — user joins their own room
+  socket.on('join', (userId: string) => {
+    socket.join(`user:${userId}`)
+    console.log(`User ${userId} joined room user:${userId}`)
+  })
+  // socket.join() = subscribe to a room
+  // rooms allow targeted messaging
+  // instead of broadcasting to everyone
+
+  // Listen for task created event from client
+  socket.on('task:create', (task) => {
+    // broadcast to ALL connected users
+    io.emit('task:new', task)
+    // io.emit = send to everyone
+    // socket.emit = send only to this user
+    // io.to('room').emit = send to specific room
+  })
+
+  socket.on('disconnect', () => {
+    console.log(`User disconnected: ${socket.id}`)
+  })
+})
+
+// Export io so controllers can emit events
+export { io }
+
+// Start server — use httpServer not app.listen
+httpServer.listen(PORT, () => {
+  console.log(`DevFlow API running on http://localhost:${PORT}`)
+})
+
+app.use(errorHandler)
