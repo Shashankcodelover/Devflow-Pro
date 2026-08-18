@@ -1,14 +1,17 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { 
   LayoutDashboard, 
   CheckSquare, 
   BarChart3, 
   Settings, 
+  Briefcase,
   Plus, 
   Zap, 
   Wifi, 
-  WifiOff 
+  WifiOff,
+  LogOut,
+  LogIn
 } from 'lucide-react'
 import { useTaskStore } from '../store/useTaskStore'
 
@@ -18,12 +21,20 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenTaskModal }) => {
   const location = useLocation()
+  const navigate = useNavigate()
   const { error } = useTaskStore()
   const isBackendConnected = !error
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn')
+    navigate('/login')
+  }
 
   const navItems = [
     { label: 'Dashboard', path: '/', icon: LayoutDashboard },
     { label: 'Tasks', path: '/tasks', icon: CheckSquare },
+    { label: 'Jobs', path: '/jobs', icon: Briefcase },
     { label: 'Analytics', path: '/analytics', icon: BarChart3 },
     { label: 'Settings', path: '/settings', icon: Settings },
   ]
@@ -71,34 +82,36 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTaskModal }) => {
           </div>
         </Link>
 
-        {/* Navigation Links */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          {navItems.map((item) => {
-            const Icon = item.icon
-            const isActive = location.pathname === item.path
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="btn"
-                style={{
-                  padding: '8px 14px',
-                  borderRadius: '8px',
-                  background: isActive ? 'rgba(168, 85, 247, 0.15)' : 'transparent',
-                  color: isActive ? '#a855f7' : '#9ca3af',
-                  fontWeight: isActive ? 600 : 500,
-                  border: isActive ? '1px solid rgba(168, 85, 247, 0.3)' : '1px solid transparent',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                <Icon size={18} />
-                <span>{item.label}</span>
-              </Link>
-            )
-          })}
-        </nav>
+        {/* Navigation Links (Visible when logged in) */}
+        {isLoggedIn && (
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            {navItems.map((item) => {
+              const Icon = item.icon
+              const isActive = location.pathname === item.path
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className="btn"
+                  style={{
+                    padding: '8px 14px',
+                    borderRadius: '8px',
+                    background: isActive ? 'rgba(168, 85, 247, 0.15)' : 'transparent',
+                    color: isActive ? '#a855f7' : '#9ca3af',
+                    fontWeight: isActive ? 600 : 500,
+                    border: isActive ? '1px solid rgba(168, 85, 247, 0.3)' : '1px solid transparent',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <Icon size={18} />
+                  <span>{item.label}</span>
+                </Link>
+              )
+            })}
+          </nav>
+        )}
 
-        {/* Right Section: API Status & Quick Action */}
+        {/* Right Section: API Status, Action & Auth */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <div 
             title={isBackendConnected ? 'Connected to express API at http://localhost:3001' : 'Backend offline - using local store'}
@@ -119,10 +132,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTaskModal }) => {
             <span>{isBackendConnected ? 'API Live (3001)' : 'Offline Store'}</span>
           </div>
 
-          <button onClick={onOpenTaskModal} className="btn btn-primary">
-            <Plus size={18} />
-            <span>New Task</span>
-          </button>
+          {isLoggedIn ? (
+            <>
+              <button onClick={onOpenTaskModal} className="btn btn-primary">
+                <Plus size={18} />
+                <span>New Task</span>
+              </button>
+              <button onClick={handleLogout} className="btn btn-secondary" title="Logout">
+                <LogOut size={18} />
+                <span>Logout</span>
+              </button>
+            </>
+          ) : (
+            <Link to="/login" className="btn btn-primary">
+              <LogIn size={18} />
+              <span>Login</span>
+            </Link>
+          )}
         </div>
       </div>
     </header>

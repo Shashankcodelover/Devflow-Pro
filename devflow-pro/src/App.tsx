@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { TaskProvider } from './store/TaskContext'
 import { Navbar } from './components/Navbar'
 import { TaskModal } from './components/TaskModal'
+import ProtectedRoute from './components/ProtectedRoute'
 import Dashboard from './pages/Dashboard'
 import { TasksPage } from './pages/TasksPage'
 import { AnalyticsPage } from './pages/AnalyticsPage'
@@ -21,12 +22,12 @@ export function App() {
           
           <main style={{ flex: 1 }}>
             <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/tasks" element={<TasksPage onOpenTaskModal={() => setIsTaskModalOpen(true)} />} />
-              <Route path="/analytics" element={<AnalyticsPage />} />
-              <Route path="/settings" element={<SettingsPage />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/jobs" element={<Jobs />} />
+              <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+              <Route path="/tasks" element={<ProtectedRoute><TasksPage onOpenTaskModal={() => setIsTaskModalOpen(true)} /></ProtectedRoute>} />
+              <Route path="/analytics" element={<ProtectedRoute><AnalyticsPage /></ProtectedRoute>} />
+              <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
+              <Route path="/jobs" element={<ProtectedRoute><Jobs /></ProtectedRoute>} />
             </Routes>
           </main>
 
