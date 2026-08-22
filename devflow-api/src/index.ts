@@ -1,3 +1,5 @@
+import dns from 'dns'
+dns.setServers(['8.8.8.8', '8.8.4.4'])
 import express from 'express'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
@@ -9,6 +11,7 @@ import dotenv from 'dotenv'
 import taskRoutes from './routes/taskRoutes'
 import authRoutes from './routes/authRoutes'
 import { errorHandler } from './middleware/errorHandler'
+import { connectDatabase } from './config/database'
 
 dotenv.config()
 
@@ -77,9 +80,11 @@ io.on('connection', (socket) => {
 // Export io so controllers can emit events
 export { io }
 
-// Start server — use httpServer not app.listen
-httpServer.listen(PORT, () => {
-  console.log(`DevFlow API running on http://localhost:${PORT}`)
+// Call before starting server
+connectDatabase().then(() => {
+  httpServer.listen(PORT, () => {
+    console.log(`DevFlow API running on http://localhost:${PORT}`)
+  })
 })
 
 app.use(errorHandler)

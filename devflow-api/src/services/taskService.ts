@@ -1,49 +1,87 @@
-// src/services/taskService.ts
-import { Task, NewTask, UpdateTask } from '../models/task.model'
-
-// In-memory storage — MongoDB replaces this Day 13
-let tasks: Task[] = [
-  { id: 1, title: 'Learn Node',    status: 'pending', priority: 'high',   createdAt: new Date() },
-  { id: 2, title: 'Build API',     status: 'pending', priority: 'high',   createdAt: new Date() },
-  { id: 3, title: 'Setup MongoDB', status: 'pending', priority: 'medium', createdAt: new Date() }
-]
-let nextId = 4
+import { TaskModel, ITask } from '../models/task.schema'
+import { NewTask, UpdateTask } from '../models/task.model'
 
 export const taskService = {
-  // get all tasks
-  getAll(): Task[] {
-    return tasks
+  async getAll(): Promise<ITask[]> {
+    return TaskModel.find().sort({ createdAt: -1 })
+    // find() = get all documents
+    // sort({ createdAt: -1 }) = newest first
   },
 
-  // get one task by id — returns undefined if not found
-  getById(id: number): Task | undefined {
-    return tasks.find(t => t.id === id)
+  async getById(id: string): Promise<ITask | null> {
+    return TaskModel.findById(id)
+    // findById = find by _id field
+    // returns null if not found
   },
 
-  // create new task — server generates id and createdAt
-  create(data: NewTask): Task {
-    const task: Task = {
-      id: nextId++,
+  async create(data: NewTask, userId?: string): Promise<ITask> {
+    const task = new TaskModel({
       ...data,
-      createdAt: new Date()
+      createdBy: userId
+    })
+    return task.save()
+    // save() triggers pre-save hooks
+    // validates against schema
+    // saves to MongoDB
+  },
+
+  async update(id: string, data: UpdateTask): Promise<ITask | null> {
+    return TaskModel.findByIdAndUpdate(
+      id,
+      { $set: data },
+      // $set = only update specified fields
+      // without $set = replaces entire document
+      { new: true, runValidators: true }
+      // new: true = return updated document
+      // runValidators = validate against schema on update
+    )
+  },
+
+  async delete(id: string): Promise<boolean> {
+    const result = await TaskModel.findByIdAndDelete(id)
+    return result !== null
+  },
+
+  // Aggregation pipeline — advanced query
+  async getStats(): Promise<{
+    total: number
+    done: number
+    pending: number
+    byPriority: { _id: string; count: number }[]
+  }> {
+    const stats = await TaskModel.aggregate([
+      // Stage 1 — group all documents
+      {
+        $group: {
+          _id: null,
+          total: { $sum: 1 },
+          done: {
+            $sum: { $cond: [{ $eq: ['$status', 'done'] }, 1, 0] }
+          },
+          pending: {
+            $sum: { $cond: [{ $eq: ['$status', 'pending'] }, 1, 0] }
+          }
+        }
+      }
+    ])
+
+    const byPriority = await TaskModel.aggregate([
+      // Stage 1 — group by priority
+      {
+        $group: {
+          _id: '$priority',
+          count: { $sum: 1 }
+        }
+      },
+      // Stage 2 — sort by count
+      { $sort: { count: -1 } }
+    ])
+
+    return {
+      total: stats[0]?.total || 0,
+      done: stats[0]?.done || 0,
+      pending: stats[0]?.pending || 0,
+      byPriority
     }
-    tasks.push(task)
-    return task
-  },
-
-  // update task — only fields sent get updated
-  update(id: number, data: UpdateTask): Task | undefined {
-    const index = tasks.findIndex(t => t.id === id)
-    if (index === -1) return undefined
-    tasks[index] = { ...tasks[index], ...data }
-    return tasks[index]
-  },
-
-  // delete task — returns true if deleted, false if not found
-  delete(id: number): boolean {
-    const index = tasks.findIndex(t => t.id === id)
-    if (index === -1) return false
-    tasks.splice(index, 1)
-    return true
   }
 }
