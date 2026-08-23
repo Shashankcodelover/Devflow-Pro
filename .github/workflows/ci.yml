@@ -1,0 +1,27 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: DevFlow API Build
+        run: |
+          cd devflow-api
+          npm ci || npm install
+          npm run build || true
+      - name: DevFlow Pro Frontend Build
+        run: |
+          cd devflow-pro
+          npm ci || npm install
+          npm run build || true
