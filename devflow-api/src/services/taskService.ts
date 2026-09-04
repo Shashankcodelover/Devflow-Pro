@@ -1,11 +1,26 @@
 import { TaskModel, ITask } from '../models/task.schema'
 import { NewTask, UpdateTask } from '../models/task.model'
+import { cacheService } from './cacheService'
 
 export const taskService = {
   async getAll(): Promise<ITask[]> {
-    return TaskModel.find().sort({ createdAt: -1 })
-    // find() = get all documents
-    // sort({ createdAt: -1 }) = newest first
+    const cacheKey = 'tasks:all'
+
+    // Step 1 — check cache first
+    const cached = await cacheService.get<ITask[]>(cacheKey)
+    if (cached) {
+      console.log('Cache HIT — returning from Redis')
+      return cached
+    }
+
+    // Step 2 — cache miss — query MongoDB
+    console.log('Cache MISS — querying MongoDB')
+    const tasks = await TaskModel.find().sort({ createdAt: -1 })
+
+    // Step 3 — store in Redis for 5 minutes
+    await cacheService.set(cacheKey, tasks, 300)
+
+    return tasks
   },
 
   async getById(id: string): Promise<ITask | null> {
@@ -15,30 +30,29 @@ export const taskService = {
   },
 
   async create(data: NewTask, userId?: string): Promise<ITask> {
-    const task = new TaskModel({
-      ...data,
-      createdBy: userId
-    })
-    return task.save()
-    // save() triggers pre-save hooks
-    // validates against schema
-    // saves to MongoDB
+    const task = new TaskModel({ ...data, createdBy: userId })
+    const saved = await task.save()
+
+    // Invalidate cache — data changed
+    await cacheService.delete('tasks:all')
+    // next GET will fetch fresh from MongoDB
+
+    return saved
   },
 
   async update(id: string, data: UpdateTask): Promise<ITask | null> {
-    return TaskModel.findByIdAndUpdate(
+    const task = await TaskModel.findByIdAndUpdate(
       id,
       { $set: data },
-      // $set = only update specified fields
-      // without $set = replaces entire document
       { new: true, runValidators: true }
-      // new: true = return updated document
-      // runValidators = validate against schema on update
     )
+    await cacheService.delete('tasks:all')
+    return task
   },
 
   async delete(id: string): Promise<boolean> {
     const result = await TaskModel.findByIdAndDelete(id)
+    await cacheService.delete('tasks:all')
     return result !== null
   },
 

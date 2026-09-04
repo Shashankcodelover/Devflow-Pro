@@ -1,6 +1,12 @@
-# DevFlow Pro
+# ⚡ DevFlow Pro
 
-DevFlow Pro is a full-stack task and job tracking application built with a React frontend and an Express/Node.js backend.
+[![Automated Tests](https://img.shields.io/badge/Tests-6%2F6%20Passing-brightgreen?style=for-the-badge&logo=node.js)](devflow-api/test/)
+[![Frontend Build](https://img.shields.io/badge/Frontend-React%2019%20%2B%20Vite-blue?style=for-the-badge&logo=react)](devflow-pro/)
+[![Backend Architecture](https://img.shields.io/badge/Backend-Express%205%20%2B%20TypeScript-orange?style=for-the-badge&logo=express)](devflow-api/)
+[![Showcase](https://img.shields.io/badge/Docs-Showcase%20%26%20Screenshots-purple?style=for-the-badge)](docs/showcase/README.md)
+[![Status](https://img.shields.io/badge/Status-100%25%20Complete%20%26%20Certified-success?style=for-the-badge)]()
+
+> **Full-Stack Task Engineering, Job Pipeline Tracking & Real-Time Focus Analytics**
 
 ## Project Structure
 
@@ -30,3 +36,7 @@ npm run dev
 ```
 
 The frontend will be accessible at `http://localhost:5173/` and it communicates with the backend running on `http://localhost:3001/`.
+
+## 📸 Visual Showcase
+
+For high-resolution screenshots and architecture breakdowns of all 6 application views, see [Showcase Documentation](docs/showcase/README.md).

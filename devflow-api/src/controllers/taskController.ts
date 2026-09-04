@@ -2,7 +2,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { taskService } from '../services/taskService'
 import { NewTask, UpdateTask } from '../models/task.model'
-import { io } from '../index'
+import { getIO } from '../socket'
 // import the Socket.io instance
 
 export const taskController = {
@@ -37,7 +37,7 @@ export const taskController = {
         priority,
         status: status || 'pending'
       })
-      io.emit('task:new', newTask)
+      getIO()?.emit('task:new', newTask)
       res.status(201).json({ success: true, data: newTask })
     } catch (err) { next(err) }
   },

@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { User, RegisterInput, LoginInput, AuthResponse } from '../models/user.model'
+import redis from '../config/redis'
 
 let users: User[] = []
 let nextId = 1
@@ -10,10 +11,32 @@ const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret'
 const JWT_ACCESS_EXPIRES = (process.env.JWT_ACCESS_EXPIRES || '15m') as any
 const JWT_REFRESH_EXPIRES = (process.env.JWT_REFRESH_EXPIRES || '7d') as any
 
-// Store refresh tokens in memory — Redis replaces this Day 15
-const refreshTokenStore = new Set<string>()
-// Set = array but no duplicates
-// fast lookup with .has()
+
+// Store refresh token
+async function storeRefreshToken(token: string, userId: number): Promise<void> {
+  await redis.set(
+    `refresh:${token}`,
+    // key = refresh: + the token
+    String(userId),
+    // value = userId
+    'EX',
+    7 * 24 * 60 * 60
+    // expires in 7 days — same as token expiry
+  )
+}
+
+// Check if refresh token is valid
+async function isValidRefreshToken(token: string): Promise<boolean> {
+  const userId = await redis.get(`refresh:${token}`)
+  return userId !== null
+  // null = key not found = token invalid or expired
+}
+
+// Delete refresh token on logout
+async function deleteRefreshToken(token: string): Promise<void> {
+  await redis.del(`refresh:${token}`)
+}
+
 
 export const authService = {
 
@@ -39,7 +62,7 @@ export const authService = {
     users.push(user)
 
     const tokens = generateTokens(user)
-    refreshTokenStore.add(tokens.refreshToken)
+    await storeRefreshToken(tokens.refreshToken, user.id)
 
     const { password, ...userWithoutPassword } = user
     return {
@@ -65,7 +88,7 @@ export const authService = {
     }
 
     const tokens = generateTokens(user)
-    refreshTokenStore.add(tokens.refreshToken)
+    await storeRefreshToken(tokens.refreshToken, user.id)
 
     const { password, ...userWithoutPassword } = user
     return {
@@ -75,9 +98,9 @@ export const authService = {
     }
   },
 
-  refresh(refreshToken: string): { accessToken: string } {
-    // Check token exists in our store
-    if (!refreshTokenStore.has(refreshToken)) {
+  async refresh(refreshToken: string): Promise<{ accessToken: string }> {
+    const isValid = await isValidRefreshToken(refreshToken)
+    if (!isValid) {
       const err: any = new Error('Invalid refresh token')
       err.statusCode = 401
       throw err
@@ -99,10 +122,8 @@ export const authService = {
     }
   },
 
-  logout(refreshToken: string): void {
-    refreshTokenStore.delete(refreshToken)
-    // remove from store — token can never be used again
-    // this is how you "invalidate" a JWT
+  async logout(refreshToken: string): Promise<void> {
+    await deleteRefreshToken(refreshToken)
   },
 
   verifyToken(token: string): any {

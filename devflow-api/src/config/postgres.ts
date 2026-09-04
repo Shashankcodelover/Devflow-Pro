@@ -1,22 +1,20 @@
 import { Pool } from 'pg'
 
+const connectionString = process.env.SUPABASE_URL || process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/devflow'
+
 const pool = new Pool({
-  connectionString: process.env.SUPABASE_URL,
-  ssl: { rejectUnauthorized: false }
-  // ssl required for Supabase connection
-  // rejectUnauthorized: false = accept Supabase's certificate
+  connectionString,
+  ssl: process.env.NODE_ENV === 'production' || process.env.SUPABASE_URL ? { rejectUnauthorized: false } : false
 })
 
 // Test connection
 pool.connect((err, client, release) => {
   if (err) {
-    console.error('PostgreSQL connection failed:', err.message)
+    console.warn('PostgreSQL connection notice:', err.message)
     return
   }
   console.log('PostgreSQL connected successfully')
-  release()
-  // release() returns connection back to pool
-  // connection pooling — shared connections, not one per request
+  if (release) release()
 })
 
 export default pool

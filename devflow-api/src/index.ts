@@ -1,5 +1,6 @@
 import dns from 'dns'
 dns.setServers(['8.8.8.8', '8.8.4.4'])
+import path from 'path'
 import express from 'express'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
@@ -10,8 +11,10 @@ import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import taskRoutes from './routes/taskRoutes'
 import authRoutes from './routes/authRoutes'
+import jobRoutes from './routes/jobRoutes'
 import { errorHandler } from './middleware/errorHandler'
 import { connectDatabase } from './config/database'
+import { rateLimiter } from './middleware/rateLimiter'
 
 dotenv.config()
 
@@ -21,12 +24,15 @@ const httpServer = createServer(app)
 // Socket.io needs direct access to HTTP server
 // not just the Express app
 
+import { setIO } from './socket'
+
 const io = new Server(httpServer, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'http://shashankj.tech', 'https://shashankj.tech'],
     methods: ['GET', 'POST']
   }
 })
+setIO(io)
 // Socket.io server attached to HTTP server
 // cors allows React frontend to connect
 
@@ -34,18 +40,30 @@ const PORT = process.env.PORT || 3001
 
 // Middleware
 app.use(helmet())
-app.use(cors({ origin: 'http://localhost:5173' }))
+app.use(cors({ origin: ['http://localhost:5173', 'http://shashankj.tech', 'https://shashankj.tech'] }))
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser())
+app.use(rateLimiter)
 
 // Routes
 app.use('/api/tasks', taskRoutes)
 app.use('/api/auth', authRoutes)
+app.use('/api/jobs', jobRoutes)
 
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() })
+})
+
+// Static frontend serving & SPA fallback
+const frontendDist = path.resolve(__dirname, '../../devflow-pro/dist')
+app.use(express.static(frontendDist))
+app.use((req, res, next) => {
+  if (req.method === 'GET' && !req.path.startsWith('/api') && !req.path.startsWith('/socket.io') && req.path !== '/health') {
+    return res.sendFile(path.join(frontendDist, 'index.html'))
+  }
+  next()
 })
 
 // Socket.io connection handling

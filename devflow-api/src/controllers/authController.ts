@@ -89,7 +89,7 @@ export const authController = {
         return
       }
 
-      const result = authService.refresh(refreshToken)
+      const result = await authService.refresh(refreshToken)
 
       res.json({ success: true, data: result })
     } catch (err) {
@@ -97,16 +97,20 @@ export const authController = {
     }
   },
 
-  logout(req: Request, res: Response): void {
-    const refreshToken = req.cookies.refreshToken
+  async logout(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const refreshToken = req.cookies.refreshToken
 
-    if (refreshToken) {
-      authService.logout(refreshToken)
+      if (refreshToken) {
+        await authService.logout(refreshToken)
+      }
+
+      res.clearCookie('refreshToken')
+      // removes the cookie from browser
+
+      res.json({ success: true, message: 'Logged out successfully' })
+    } catch (err) {
+      next(err)
     }
-
-    res.clearCookie('refreshToken')
-    // removes the cookie from browser
-
-    res.json({ success: true, message: 'Logged out successfully' })
   }
 }
