@@ -103,3 +103,5 @@ export const SettingsPage: React.FC = () => {
     </div>
   )
 }
+
+export default SettingsPage

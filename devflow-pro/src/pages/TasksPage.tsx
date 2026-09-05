@@ -208,3 +208,5 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
     </div>
   )
 }
+
+export default TasksPage
