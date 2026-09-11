@@ -33,6 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTaskModal }) => {
 
   const navItems = [
     { label: 'Dashboard', path: '/', icon: LayoutDashboard },
+    { label: '🧠 Sprint Copilot', path: '/copilot', icon: Zap },
     { label: 'Tasks', path: '/tasks', icon: CheckSquare },
     { label: 'Jobs', path: '/jobs', icon: Briefcase },
     { label: 'Analytics', path: '/analytics', icon: BarChart3 },

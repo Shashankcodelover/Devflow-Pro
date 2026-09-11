@@ -12,6 +12,7 @@ import dotenv from 'dotenv'
 import taskRoutes from './routes/taskRoutes'
 import authRoutes from './routes/authRoutes'
 import jobRoutes from './routes/jobRoutes'
+import copilotRoutes from './routes/copilotRoutes'
 import { errorHandler } from './middleware/errorHandler'
 import { connectDatabase } from './config/database'
 import { rateLimiter } from './middleware/rateLimiter'
@@ -50,6 +51,7 @@ app.use(rateLimiter)
 app.use('/api/tasks', taskRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/jobs', jobRoutes)
+app.use('/api/copilot', copilotRoutes)
 
 // Health check
 app.get('/health', (req, res) => {

@@ -13,6 +13,7 @@ const SettingsPage = lazy(() => import('./pages/SettingsPage'))
 const Login = lazy(() => import('./pages/Login'))
 const Register = lazy(() => import('./pages/Register'))
 const Jobs = lazy(() => import('./pages/Jobs'))
+const SprintCopilot = lazy(() => import('./pages/SprintCopilot'))
 
 export function App() {
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false)
@@ -50,6 +51,7 @@ export function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                <Route path="/copilot" element={<ProtectedRoute><SprintCopilot /></ProtectedRoute>} />
                 <Route path="/tasks" element={<ProtectedRoute><TasksPage onOpenTaskModal={() => setIsTaskModalOpen(true)} /></ProtectedRoute>} />
                 <Route path="/analytics" element={<ProtectedRoute><AnalyticsPage /></ProtectedRoute>} />
                 <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />

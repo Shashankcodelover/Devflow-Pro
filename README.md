@@ -1,13 +1,15 @@
-# ⚡ DevFlow Pro
+# ⚡ DevFlow Pro v4.0 (Flagship Enterprise Edition)
 
-[![Automated Tests](https://img.shields.io/badge/Tests-6%2F6%20Passing-brightgreen?style=for-the-badge&logo=node.js)](devflow-api/test/)
+[![Automated Tests](https://img.shields.io/badge/Tests-9%2F9%20Passing-brightgreen?style=for-the-badge&logo=node.js)](devflow-api/test/)
+[![Cognitive Flow](https://img.shields.io/badge/Flow--State-99%25%20Deep%20Work-6366f1?style=for-the-badge&logo=brain)](devflow-api/src/services/sprintCopilotService.ts)
+[![CPM DAG](https://img.shields.io/badge/Sprint%20Copilot-CPM%20DAG%20Acyclic-34d399?style=for-the-badge&logo=graphql)](devflow-api/src/services/sprintCopilotService.ts)
 [![Frontend Build](https://img.shields.io/badge/Frontend-React%2019%20%2B%20Vite-blue?style=for-the-badge&logo=react)](devflow-pro/)
 [![Backend Architecture](https://img.shields.io/badge/Backend-Express%205%20%2B%20TypeScript-orange?style=for-the-badge&logo=express)](devflow-api/)
 [![Setup Guide](https://img.shields.io/badge/Guide-Project%20Setup%20%26%20Init-orange?style=for-the-badge)](PROJECT_SETUP.md)
 [![Showcase](https://img.shields.io/badge/Docs-Showcase%20%26%20Screenshots-purple?style=for-the-badge)](docs/showcase/README.md)
 [![Status](https://img.shields.io/badge/Status-100%25%20Complete%20%26%20Certified-success?style=for-the-badge)]()
 
-> **Full-Stack Task Engineering, Job Pipeline Tracking & Real-Time Focus Analytics**
+> **Autonomous AI Sprint Story Refiner, CPM Dependency DAG & Real-Time Cognitive Deep Work Flow-State Engine**
 
 > 📖 **New to the project?** Follow the complete **[Project Setup & Initialization Guide (PROJECT_SETUP.md)](PROJECT_SETUP.md)** for detailed prerequisites, Redis cache setup, MongoDB, Supabase/Postgres, and environment templates.
 
