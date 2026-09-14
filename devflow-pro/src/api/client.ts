@@ -68,11 +68,12 @@ apiClient.interceptors.response.use(
         // resend the failed request
 
       } catch {
-        // refresh token also expired → logout
-        localStorage.removeItem('accessToken')
-        localStorage.removeItem('isLoggedIn')
-        window.location.href = '/login'
-        // redirect to login
+        // refresh token also expired → logout if not in mock/demo mode
+        if (localStorage.getItem('accessToken') !== 'mock-jwt-token-2026-prod') {
+          localStorage.removeItem('accessToken')
+          localStorage.removeItem('isLoggedIn')
+          window.location.href = '/login'
+        }
       }
     }
 

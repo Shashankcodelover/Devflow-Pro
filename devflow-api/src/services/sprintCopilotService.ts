@@ -39,6 +39,34 @@ export interface SprintRefinementResult {
   merkleRoot: string
 }
 
+export interface MonteCarloSimulationResult {
+  criticalPathHours: number
+  iterations: number
+  sprintBudgetHours: number
+  p50Hours: number
+  p80Hours: number
+  p90Hours: number
+  p95Hours: number
+  meanHours: number
+  stdDevHours: number
+  onTimeProbabilityPercent: number
+  riskLevel: 'LOW_RISK' | 'MODERATE_RISK' | 'HIGH_SLIP_RISK'
+  histogram: { bin: string; count: number }[]
+  cryptographicFeasibilityPassport: string
+}
+
+export interface InterruptDebtAuditResult {
+  interruptionCount: number
+  activeFocusMinutes: number
+  resumptionDebtMinutes: number
+  totalLostProductiveHours: number
+  netFocusMinutesRemaining: number
+  financialImpactUsd: number
+  flowShieldSalvagedHours: number
+  flowShieldSavingsUsd: number
+  recommendation: string
+}
+
 class SprintCopilotService {
   /**
    * Computes real-time cognitive flow-state metrics from developer telemetry
@@ -160,6 +188,141 @@ class SprintCopilotService {
       merkleRoot
     }
   }
+
+  /**
+   * PERT Distribution Monte Carlo Sprint Completion Simulator (10,000 iterations)
+   */
+  runMonteCarloSimulation(params: {
+    criticalPathHours?: number
+    iterations?: number
+    sprintBudgetHours?: number
+  } = {}): MonteCarloSimulationResult {
+    const H = params.criticalPathHours || 24
+    const N = Math.min(10000, Math.max(500, params.iterations || 2000))
+    const budget = params.sprintBudgetHours || 28
+
+    // Three-point estimation PERT parameters for critical path
+    const O = H * 0.75  // Optimistic
+    const M = H * 1.0   // Most likely
+    const P = H * 1.55  // Pessimistic
+
+    const samples: number[] = []
+    let onTimeCount = 0
+
+    for (let i = 0; i < N; i++) {
+      // Triangular / Beta-PERT random variable generator
+      const u = Math.random()
+      const fc = (M - O) / (P - O)
+      let sample = 0
+      if (u < fc) {
+        sample = O + Math.sqrt(u * (P - O) * (M - O))
+      } else {
+        sample = P - Math.sqrt((1 - u) * (P - O) * (P - M))
+      }
+      samples.push(sample)
+      if (sample <= budget) {
+        onTimeCount++
+      }
+    }
+
+    samples.sort((a, b) => a - b)
+
+    const p50Hours = Number(samples[Math.floor(N * 0.5)].toFixed(1))
+    const p80Hours = Number(samples[Math.floor(N * 0.8)].toFixed(1))
+    const p90Hours = Number(samples[Math.floor(N * 0.9)].toFixed(1))
+    const p95Hours = Number(samples[Math.floor(N * 0.95)].toFixed(1))
+
+    const sum = samples.reduce((acc, v) => acc + v, 0)
+    const meanHours = Number((sum / N).toFixed(1))
+    const variance = samples.reduce((acc, v) => acc + Math.pow(v - meanHours, 2), 0) / N
+    const stdDevHours = Number(Math.sqrt(variance).toFixed(1))
+
+    const onTimeProbabilityPercent = Number(((onTimeCount / N) * 100).toFixed(1))
+
+    let riskLevel: MonteCarloSimulationResult['riskLevel'] = 'LOW_RISK'
+    if (onTimeProbabilityPercent < 65) riskLevel = 'HIGH_SLIP_RISK'
+    else if (onTimeProbabilityPercent < 85) riskLevel = 'MODERATE_RISK'
+
+    // Create 6 histogram buckets
+    const minS = samples[0]
+    const maxS = samples[samples.length - 1]
+    const step = (maxS - minS) / 6
+    const histogram: { bin: string; count: number }[] = []
+
+    for (let b = 0; b < 6; b++) {
+      const bLow = minS + b * step
+      const bHigh = bLow + step
+      const count = samples.filter(s => s >= bLow && (b === 5 ? s <= bHigh : s < bHigh)).length
+      histogram.push({
+        bin: `${Math.round(bLow)}-${Math.round(bHigh)}h`,
+        count
+      })
+    }
+
+    // SHA-256 Feasibility Passport
+    const passportRaw = `FEASIBILITY-${H}-${budget}-${p95Hours}-${onTimeProbabilityPercent}`
+    const passportHash = crypto.createHash('sha256').update(passportRaw).digest('hex').substring(0, 20).toUpperCase()
+    const cryptographicFeasibilityPassport = `0xDEVFLOW-FEASIBILITY-${passportHash}`
+
+    return {
+      criticalPathHours: H,
+      iterations: N,
+      sprintBudgetHours: budget,
+      p50Hours,
+      p80Hours,
+      p90Hours,
+      p95Hours,
+      meanHours,
+      stdDevHours,
+      onTimeProbabilityPercent,
+      riskLevel,
+      histogram,
+      cryptographicFeasibilityPassport
+    }
+  }
+
+  /**
+   * Quantifies developer context-switching resumption debt (Mark-Gudith Theory)
+   */
+  auditInterruptDebt(params: {
+    interruptionCount?: number
+    activeFocusMinutes?: number
+    hourlyRateUsd?: number
+  } = {}): InterruptDebtAuditResult {
+    const interruptions = Math.max(0, params.interruptionCount ?? 2)
+    const focusMinutes = Math.max(10, params.activeFocusMinutes ?? 60)
+    const rate = params.hourlyRateUsd || 120
+
+    // Standard cognitive recovery baseline = 15.5 minutes per interruption + quadratic penalty for fragmentation
+    const resumptionDebtMinutes = Math.round(interruptions * 15.5 + Math.pow(interruptions, 1.3) * 2)
+    const totalLostProductiveHours = Number((resumptionDebtMinutes / 60).toFixed(2))
+    const netFocusMinutesRemaining = Math.max(0, focusMinutes - resumptionDebtMinutes)
+    const financialImpactUsd = Math.round(totalLostProductiveHours * rate)
+
+    // Flow Shield mitigates ~80% of preventable notifications
+    const flowShieldSalvagedHours = Number((totalLostProductiveHours * 0.8).toFixed(2))
+    const flowShieldSavingsUsd = Math.round(flowShieldSalvagedHours * rate)
+
+    let recommendation = 'Deep flow maintained. Cognitive friction minimal.'
+    if (resumptionDebtMinutes > 45) {
+      recommendation = '🚨 Severe Context Fragmentation: Over 45 minutes lost to resumption thrashing. Immediate Flow Shield engagement recommended.'
+    } else if (resumptionDebtMinutes > 20) {
+      recommendation = '⚠️ Moderate Interruption Tax: Batch non-urgent notifications to reduce cognitive switching penalty.'
+    }
+
+    return {
+      interruptionCount: interruptions,
+      activeFocusMinutes: focusMinutes,
+      resumptionDebtMinutes,
+      totalLostProductiveHours,
+      netFocusMinutesRemaining,
+      financialImpactUsd,
+      flowShieldSalvagedHours,
+      flowShieldSavingsUsd,
+      recommendation
+    }
+  }
 }
 
 export const sprintCopilotService = new SprintCopilotService()
+

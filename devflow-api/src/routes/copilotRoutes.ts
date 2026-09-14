@@ -64,4 +64,45 @@ router.post('/refine-story', (req: Request, res: Response) => {
   })
 })
 
+/**
+ * POST /api/copilot/monte-carlo-simulation
+ */
+router.post('/monte-carlo-simulation', (req: Request, res: Response) => {
+  try {
+    const { criticalPathHours, iterations, sprintBudgetHours } = req.body || {}
+    const simulation = sprintCopilotService.runMonteCarloSimulation({
+      criticalPathHours: criticalPathHours ? Number(criticalPathHours) : 24,
+      iterations: iterations ? Number(iterations) : 2000,
+      sprintBudgetHours: sprintBudgetHours ? Number(sprintBudgetHours) : 28
+    })
+    res.json({
+      success: true,
+      simulation
+    })
+  } catch (err: any) {
+    res.status(500).json({ error: err.message })
+  }
+})
+
+/**
+ * POST /api/copilot/interrupt-debt-audit
+ */
+router.post('/interrupt-debt-audit', (req: Request, res: Response) => {
+  try {
+    const { interruptionCount, activeFocusMinutes, hourlyRateUsd } = req.body || {}
+    const audit = sprintCopilotService.auditInterruptDebt({
+      interruptionCount: interruptionCount !== undefined ? Number(interruptionCount) : 2,
+      activeFocusMinutes: activeFocusMinutes ? Number(activeFocusMinutes) : 60,
+      hourlyRateUsd: hourlyRateUsd ? Number(hourlyRateUsd) : 120
+    })
+    res.json({
+      success: true,
+      audit
+    })
+  } catch (err: any) {
+    res.status(500).json({ error: err.message })
+  }
+})
+
 export default router
+
