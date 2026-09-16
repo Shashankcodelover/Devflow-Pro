@@ -13,6 +13,7 @@ import taskRoutes from './routes/taskRoutes'
 import authRoutes from './routes/authRoutes'
 import jobRoutes from './routes/jobRoutes'
 import copilotRoutes from './routes/copilotRoutes'
+import topologyRoutes from './routes/topologyRoutes'
 import { errorHandler } from './middleware/errorHandler'
 import { connectDatabase } from './config/database'
 import { rateLimiter } from './middleware/rateLimiter'
@@ -44,6 +45,7 @@ app.use(helmet())
 app.use(cors({ origin: ['http://localhost:5173', 'http://shashankj.tech', 'https://shashankj.tech'] }))
 app.use(morgan('dev'))
 app.use(express.json())
+app.use(express.text({ limit: '15mb', type: ['text/plain', 'text/csv', 'application/csv'] }))
 app.use(cookieParser())
 app.use(rateLimiter)
 
@@ -52,6 +54,7 @@ app.use('/api/tasks', taskRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/jobs', jobRoutes)
 app.use('/api/copilot', copilotRoutes)
+app.use('/api/topology', topologyRoutes)
 
 // Health check
 app.get('/health', (req, res) => {

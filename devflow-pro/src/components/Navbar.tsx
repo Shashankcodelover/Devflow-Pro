@@ -11,7 +11,9 @@ import {
   Wifi, 
   WifiOff,
   LogOut,
-  LogIn
+  LogIn,
+  Network,
+  UploadCloud
 } from 'lucide-react'
 import { useTaskStore } from '../store/useTaskStore'
 
@@ -34,6 +36,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTaskModal }) => {
   const navItems = [
     { label: 'Dashboard', path: '/', icon: LayoutDashboard },
     { label: '🧠 Sprint Copilot', path: '/copilot', icon: Zap },
+    { label: 'Topology Mesh', path: '/topology', icon: Network },
+    { label: 'Bulk Ingestion', path: '/ingestion', icon: UploadCloud },
     { label: 'Tasks', path: '/tasks', icon: CheckSquare },
     { label: 'Jobs', path: '/jobs', icon: Briefcase },
     { label: 'Analytics', path: '/analytics', icon: BarChart3 },

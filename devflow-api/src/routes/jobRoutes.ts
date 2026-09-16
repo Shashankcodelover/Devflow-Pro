@@ -1,15 +1,19 @@
-import { Router } from 'express'
-import { jobController } from '../controllers/jobController'
-import { protect } from '../middleware/authMiddleware'
+import { Router } from 'express';
+import { jobController } from '../controllers/jobController';
+import { protect } from '../middleware/authMiddleware';
 
-const router = Router()
-router.use(protect)
+const router = Router();
 
-router.get('/',       jobController.getAll)
-router.get('/stats',  jobController.getStats)
-router.get('/:id',    jobController.getById)
-router.post('/',      jobController.create)
-router.patch('/:id',  jobController.update)
-router.delete('/:id', jobController.delete)
+// Upload can be accessed in bulk demo mode
+router.post('/upload', jobController.upload);
 
-export default router
+router.use(protect);
+router.get('/', jobController.getAll);
+router.get('/stats', jobController.getStats);
+router.get('/:id', jobController.getById);
+router.post('/', jobController.create);
+router.patch('/:id', jobController.update);
+router.delete('/:id', jobController.delete);
+router.delete('/', jobController.deleteAll);
+
+export default router;
