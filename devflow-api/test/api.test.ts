@@ -80,7 +80,6 @@ describe('DevFlow Pro API Automated Test Suite', () => {
     if (server) {
       await new Promise<void>((resolve) => server.close(() => resolve()))
     }
-    setTimeout(() => process.exit(0), 100)
   })
 
   test('1. Health Check Endpoint — returns 200 and status: OK', async () => {

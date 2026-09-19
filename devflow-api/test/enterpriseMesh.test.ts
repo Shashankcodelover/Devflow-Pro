@@ -1,9 +1,11 @@
-import test from 'node:test';
+import { describe, test, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { topologyService } from '../src/services/topologyService';
 import { taskService } from '../src/services/taskService';
 import { jobService } from '../src/services/jobService';
+import redis from '../src/config/redis';
 
+describe('DevFlow Pro Enterprise Fleet Test Suite', () => {
 test('DevFlow Pro Enterprise Fleet: CSV Parsing Utility', () => {
   const csv = `sourceService,targetService,protocol,latencyMs,slaTargetMs
 DevFlow Gateway,Auth0 FIDO2,mTLS,14,30
@@ -141,4 +143,11 @@ test('DevFlow Pro Enterprise Fleet: Career Job Application Ingestion & Deletion'
   // Cascading deletion
   const deleted = await jobService.delete(newJob.id);
   assert.equal(deleted, true);
+});
+
+after(() => {
+  try {
+    redis.disconnect();
+  } catch {}
+});
 });

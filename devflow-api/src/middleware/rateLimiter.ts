@@ -1,6 +1,9 @@
 import { Request, Response, NextFunction } from 'express'
 import redis from '../config/redis'
 
+// In-memory rate limiting fallback if Redis is unreachable
+const memoryRateMap = new Map<string, { count: number; expiresAt: number }>()
+
 export async function rateLimiter(
   req: Request,
   res: Response,
@@ -8,33 +11,41 @@ export async function rateLimiter(
 ): Promise<void> {
   const ip = req.ip || 'unknown'
   const key = `rate:${ip}`
-  // key format: rate:192.168.1.1
-  // separate counter per IP address
+  let requests = 1
 
-  const requests = await redis.incr(key)
-  // INCR — atomic increment
-  // if key does not exist → creates it with value 1
-  // if exists → increments by 1
-
-  if (requests === 1) {
-    // first request — set expiry of 60 seconds
-    await redis.expire(key, 60)
-    // after 60 seconds key deleted → counter resets
+  try {
+    if (redis.status === 'ready') {
+      requests = await redis.incr(key)
+      if (requests === 1) {
+        await redis.expire(key, 60)
+      }
+    } else {
+      throw new Error('Redis not ready')
+    }
+  } catch {
+    // In-memory token bucket fallback
+    const now = Date.now()
+    const entry = memoryRateMap.get(key)
+    if (!entry || now > entry.expiresAt) {
+      memoryRateMap.set(key, { count: 1, expiresAt: now + 60000 })
+      requests = 1
+    } else {
+      entry.count += 1
+      requests = entry.count
+    }
   }
 
   if (requests > 100) {
     res.status(429).json({
       success: false,
       error: 'Too many requests. Try again in 1 minute.',
-      retryAfter: await redis.ttl(key)
-      // tell client how many seconds to wait
+      retryAfter: 60
     })
     return
   }
 
-  // add headers so client knows their limit
   res.setHeader('X-RateLimit-Limit', '100')
-  res.setHeader('X-RateLimit-Remaining', String(100 - requests))
+  res.setHeader('X-RateLimit-Remaining', String(Math.max(0, 100 - requests)))
 
   next()
 }

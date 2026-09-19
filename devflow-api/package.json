@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "test": "tsx --test test/*.test.ts"
+    "test": "tsx --test test/api.test.ts test/copilot.test.ts test/enterpriseMesh.test.ts"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

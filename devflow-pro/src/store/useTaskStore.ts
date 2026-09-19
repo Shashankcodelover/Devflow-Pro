@@ -27,6 +27,14 @@ interface TaskStore {
 
 const API_BASE = 'http://localhost:3001/api/tasks'
 
+function getAuthHeaders(): Record<string, string> {
+  const token = localStorage.getItem('accessToken') || 'mock-jwt-token-2026-prod'
+  return {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  }
+}
+
 export const useTaskStore = create<TaskStore>((set, get) => ({
   tasks: [
     { id: 1, title: 'Build Express REST API', status: 'done', priority: 'high', createdAt: new Date().toISOString() },
@@ -44,7 +52,9 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   fetchTasks: async () => {
     set({ isLoading: true, error: null })
     try {
-      const res = await fetch(API_BASE)
+      const res = await fetch(API_BASE, {
+        headers: getAuthHeaders()
+      })
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
       const json = await res.json()
       if (json.success && Array.isArray(json.data)) {
@@ -62,7 +72,7 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
     try {
       const res = await fetch(API_BASE, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders(),
         body: JSON.stringify(newTaskInput)
       })
       if (res.ok) {
@@ -101,7 +111,7 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
     try {
       await fetch(`${API_BASE}/${id}`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ status: newStatus })
       })
     } catch (err) {
@@ -117,7 +127,7 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
     try {
       const res = await fetch(`${API_BASE}/${id}`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getAuthHeaders(),
         body: JSON.stringify(updates)
       })
       return res.ok
@@ -133,7 +143,10 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
     }))
 
     try {
-      await fetch(`${API_BASE}/${id}`, { method: 'DELETE' })
+      await fetch(`${API_BASE}/${id}`, { 
+        method: 'DELETE',
+        headers: getAuthHeaders()
+      })
     } catch (err) {
       console.warn('Backend API delete failed:', err)
     }

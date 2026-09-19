@@ -42,7 +42,10 @@ const PORT = process.env.PORT || 3001
 
 // Middleware
 app.use(helmet())
-app.use(cors({ origin: ['http://localhost:5173', 'http://shashankj.tech', 'https://shashankj.tech'] }))
+app.use(cors({ 
+  origin: ['http://localhost:5173', 'http://shashankj.tech', 'https://shashankj.tech'],
+  credentials: true
+}))
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.text({ limit: '15mb', type: ['text/plain', 'text/csv', 'application/csv'] }))

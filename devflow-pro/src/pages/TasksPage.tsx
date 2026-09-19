@@ -131,11 +131,13 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
             <p style={{ fontSize: '0.9rem' }}>Try tweaking your search or filter settings.</p>
           </div>
         ) : (
-          filteredTasks.map((task) => (
-            <div
-              key={task.id}
-              className="glass-panel"
-              style={{
+          filteredTasks.map((task, idx) => {
+            const taskId = task.id || (task as any)._id || `task-${idx}`
+            return (
+              <div
+                key={taskId}
+                className="glass-panel"
+                style={{
                 padding: '18px 24px',
                 display: 'flex',
                 alignItems: 'center',
@@ -201,7 +203,7 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
               </div>
 
             </div>
-          ))
+          )})
         )}
       </div>
 

@@ -584,7 +584,8 @@ export default function Dashboard() {
               </div>
             )}
 
-            {tasks.map((task: Task) => {
+            {tasks.map((task: any, idx: number) => {
+              const taskId = task.id || task._id || `task-${idx}`
               const isDone = task.status === 'done'
               const priorityColors: Record<string, { bg: string; text: string; border: string }> = {
                 high: { bg: 'rgba(239, 68, 68, 0.12)', text: '#f87171', border: 'rgba(239, 68, 68, 0.3)' },
@@ -595,7 +596,7 @@ export default function Dashboard() {
 
               return (
                 <div 
-                  key={task.id}
+                  key={taskId}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -610,7 +611,7 @@ export default function Dashboard() {
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1, minWidth: 0 }}>
                     <button
-                      onClick={() => !isDone && markDone.mutate(String(task.id))}
+                      onClick={() => !isDone && markDone.mutate(String(taskId))}
                       style={{
                         background: 'none',
                         border: 'none',
@@ -649,7 +650,7 @@ export default function Dashboard() {
                     </span>
 
                     <button
-                      onClick={() => deleteTask.mutate(String(task.id))}
+                      onClick={() => deleteTask.mutate(String(taskId))}
                       style={{
                         background: 'none',
                         border: 'none',

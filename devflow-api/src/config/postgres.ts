@@ -4,7 +4,8 @@ const connectionString = process.env.SUPABASE_URL || process.env.DATABASE_URL ||
 
 const pool = new Pool({
   connectionString,
-  ssl: process.env.NODE_ENV === 'production' || process.env.SUPABASE_URL ? { rejectUnauthorized: false } : false
+  ssl: process.env.NODE_ENV === 'production' || process.env.SUPABASE_URL ? { rejectUnauthorized: false } : false,
+  connectionTimeoutMillis: 1000
 })
 
 // Test connection

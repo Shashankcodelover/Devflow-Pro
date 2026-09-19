@@ -42,38 +42,44 @@ export const taskService = {
     }
 
     // Step 2 — query MongoDB or fallback
-    try {
-      const tasks = await TaskModel.find().sort({ createdAt: -1 });
-      if (tasks && tasks.length > 0) {
-        await cacheService.set(cacheKey, tasks, 300);
-        return tasks;
+    if (TaskModel.db?.readyState === 1) {
+      try {
+        const tasks = await TaskModel.find().sort({ createdAt: -1 });
+        if (tasks && tasks.length > 0) {
+          await cacheService.set(cacheKey, tasks, 300);
+          return tasks;
+        }
+      } catch {
+        // ignore
       }
-    } catch {
-      // ignore
     }
 
     return inMemoryTasks as ITask[];
   },
 
   async getById(id: string): Promise<ITask | null> {
-    try {
-      const task = await TaskModel.findById(id);
-      if (task) return task;
-    } catch {
-      // ignore
+    if (TaskModel.db?.readyState === 1) {
+      try {
+        const task = await TaskModel.findById(id);
+        if (task) return task;
+      } catch {
+        // ignore
+      }
     }
     const found = inMemoryTasks.find((t) => t._id === id || String(t.id) === id);
     return found ? (found as ITask) : null;
   },
 
   async create(data: NewTask, userId?: string): Promise<ITask> {
-    try {
-      const task = new TaskModel({ ...data, createdBy: userId });
-      const saved = await task.save();
-      await cacheService.delete('tasks:all');
-      return saved;
-    } catch {
-      // Fallback
+    if (TaskModel.db?.readyState === 1) {
+      try {
+        const task = new TaskModel({ ...data, createdBy: userId });
+        const saved = await task.save();
+        await cacheService.delete('tasks:all');
+        return saved;
+      } catch {
+        // Fallback
+      }
     }
 
     const newTask = {
@@ -100,18 +106,20 @@ export const taskService = {
   },
 
   async update(id: string, data: UpdateTask): Promise<ITask | null> {
-    try {
-      const task = await TaskModel.findByIdAndUpdate(
-        id,
-        { $set: data },
-        { new: true, runValidators: true }
-      );
-      if (task) {
-        await cacheService.delete('tasks:all');
-        return task;
+    if (TaskModel.db?.readyState === 1) {
+      try {
+        const task = await TaskModel.findByIdAndUpdate(
+          id,
+          { $set: data },
+          { new: true, runValidators: true }
+        );
+        if (task) {
+          await cacheService.delete('tasks:all');
+          return task;
+        }
+      } catch {
+        // Fallback
       }
-    } catch {
-      // Fallback
     }
 
     const idx = inMemoryTasks.findIndex((t) => t._id === id || String(t.id) === id);
@@ -124,12 +132,15 @@ export const taskService = {
 
   async delete(id: string): Promise<boolean> {
     let deleted = false;
-    try {
-      const result = await TaskModel.findByIdAndDelete(id);
-      deleted = result !== null;
-      await cacheService.delete('tasks:all');
-    } catch {
-      // ignore
+    if (TaskModel.db?.readyState === 1) {
+      try {
+        const result = await TaskModel.findByIdAndDelete(id);
+        deleted = result !== null;
+        await cacheService.delete('tasks:all');
+        if (deleted) return true;
+      } catch {
+        // Fallback
+      }
     }
 
     const before = inMemoryTasks.length;
