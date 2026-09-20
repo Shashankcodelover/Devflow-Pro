@@ -30,7 +30,7 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
 
   useEffect(() => {
     fetchTasks()
-  }, [])
+  }, [fetchTasks])
 
   // Filter tasks based on status, search, and priority
   const filteredTasks = tasks.filter((t) => {

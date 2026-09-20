@@ -45,7 +45,7 @@ router.post('/', (req: Request, res: Response) => {
 router.delete('/:id', (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const deleted = topologyService.delete(id);
+    const deleted = topologyService.delete(id as string);
     if (!deleted) {
       res.status(404).json({ success: false, error: 'Corridor not found or already severed' });
       return;

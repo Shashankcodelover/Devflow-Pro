@@ -36,7 +36,7 @@ export default function SprintCopilot() {
   useEffect(() => {
     fetchTelemetryMetrics(wpm, focusMinutes, interruptions)
     handleRefineStory(storyInput)
-  }, [])
+  }, [fetchTelemetryMetrics, handleRefineStory, wpm, focusMinutes, interruptions, storyInput])
 
   const fetchTelemetryMetrics = async (w: number, f: number, i: number) => {
     try {
