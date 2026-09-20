@@ -67,3 +67,10 @@
   - Architecture Topology Mesh CRUD & Severing Mechanics
   - Task & Job Lifecycle Workflows
 - **Production Build**: Clean TypeScript compilation (`tsc -b`) and asset bundling via Vite 8.
+
+
+## User Flow Verification
+
+![User Flow](docs/devflow_monte_carlo_verified.png)
+![User Flow](docs/devflow_sprint_copilot_verified.png)
+
