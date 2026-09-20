@@ -33,11 +33,6 @@ export default function SprintCopilot() {
   const [dagResult, setDagResult] = useState<any>(null)
   const [dagLoading, setDagLoading] = useState(false)
 
-  useEffect(() => {
-    fetchTelemetryMetrics(wpm, focusMinutes, interruptions)
-    handleRefineStory(storyInput)
-  }, [fetchTelemetryMetrics, handleRefineStory, wpm, focusMinutes, interruptions, storyInput])
-
   const fetchTelemetryMetrics = async (w: number, f: number, i: number) => {
     try {
       const res = await fetch(`${API_BASE}/api/copilot/flow-telemetry`, {
@@ -77,6 +72,11 @@ export default function SprintCopilot() {
       setDagLoading(false)
     }
   }
+
+  useEffect(() => {
+    fetchTelemetryMetrics(wpm, focusMinutes, interruptions)
+    handleRefineStory(storyInput)
+  }, [wpm, focusMinutes, interruptions, storyInput])
 
   return (
     <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '30px 24px', color: '#f3f4f6' }}>
