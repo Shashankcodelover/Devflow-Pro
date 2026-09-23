@@ -72,7 +72,7 @@ function Login() {
             width: '48px',
             height: '48px',
             borderRadius: '12px',
-            background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+            background: 'linear-gradient(135deg, #6366f1, #3b82f6)',
             boxShadow: '0 8px 16px -4px rgba(99, 102, 241, 0.5)',
             marginBottom: '14px'
           }}>

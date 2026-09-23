@@ -91,7 +91,7 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
                   fontSize: '0.85rem',
                   fontWeight: 600,
                   cursor: 'pointer',
-                  background: filterStatus === status ? '#a855f7' : 'transparent',
+                  background: filterStatus === status ? '#3b82f6' : 'transparent',
                   color: filterStatus === status ? '#fff' : '#9ca3af',
                   transition: 'all 0.15s ease',
                   textTransform: 'capitalize'

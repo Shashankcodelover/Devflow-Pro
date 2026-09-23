@@ -48,7 +48,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose }) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <PlusCircle size={22} style={{ color: '#a855f7' }} />
+            <PlusCircle size={22} style={{ color: '#3b82f6' }} />
             <h3 style={{ fontSize: '1.2rem', fontWeight: 600, color: '#fff' }}>Create New Task</h3>
           </div>
           <button onClick={onClose} className="btn-icon">

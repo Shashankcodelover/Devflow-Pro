@@ -55,10 +55,10 @@ export const AnalyticsPage: React.FC = () => {
         <div className="glass-panel" style={{ padding: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
             <span style={{ color: '#9ca3af', fontSize: '0.9rem', fontWeight: 600 }}>Average Lead Time</span>
-            <Zap size={20} style={{ color: '#a855f7' }} />
+            <Zap size={20} style={{ color: '#3b82f6' }} />
           </div>
           <div style={{ fontSize: '2rem', fontWeight: 800, color: '#fff' }}>1.4 Days</div>
-          <div style={{ color: '#a855f7', fontSize: '0.8rem', marginTop: '4px' }}>Optimal resolution speed</div>
+          <div style={{ color: '#3b82f6', fontSize: '0.8rem', marginTop: '4px' }}>Optimal resolution speed</div>
         </div>
 
       </div>
@@ -67,7 +67,7 @@ export const AnalyticsPage: React.FC = () => {
       <div className="glass-panel" style={{ padding: '28px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <PieChart size={20} style={{ color: '#a855f7' }} />
+            <PieChart size={20} style={{ color: '#3b82f6' }} />
             <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff' }}>Priority Distribution Breakdown</h3>
           </div>
         </div>

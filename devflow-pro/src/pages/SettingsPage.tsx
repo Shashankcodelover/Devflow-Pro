@@ -35,7 +35,7 @@ export const SettingsPage: React.FC = () => {
         
         {/* API Settings */}
         <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#a855f7' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#3b82f6' }}>
             <Server size={20} />
             <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff' }}>Backend API Connection</h3>
           </div>
@@ -72,7 +72,7 @@ export const SettingsPage: React.FC = () => {
               type="checkbox"
               checked={autoSync}
               onChange={(e) => setAutoSync(e.target.checked)}
-              style={{ width: '18px', height: '18px', accentColor: '#a855f7', cursor: 'pointer' }}
+              style={{ width: '18px', height: '18px', accentColor: '#3b82f6', cursor: 'pointer' }}
             />
           </div>
 
@@ -85,7 +85,7 @@ export const SettingsPage: React.FC = () => {
               type="checkbox"
               checked={notifications}
               onChange={(e) => setNotifications(e.target.checked)}
-              style={{ width: '18px', height: '18px', accentColor: '#a855f7', cursor: 'pointer' }}
+              style={{ width: '18px', height: '18px', accentColor: '#3b82f6', cursor: 'pointer' }}
             />
           </div>
         </div>

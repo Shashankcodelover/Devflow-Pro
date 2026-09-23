@@ -436,7 +436,7 @@ export default function BulkIngestionStudio() {
               borderRadius: '10px',
               fontWeight: 700,
               fontSize: '0.85rem',
-              background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+              background: 'linear-gradient(135deg, #6366f1, #3b82f6)',
               color: '#fff',
               border: 'none',
               cursor: 'pointer',
