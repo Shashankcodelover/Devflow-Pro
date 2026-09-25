@@ -49,7 +49,7 @@ function Login() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '32px 16px',
+      padding: '16px 16px',
       background: 'radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 60%)'
     }}>
       <div style={{
@@ -59,8 +59,8 @@ function Login() {
         border: '1px solid rgba(255, 255, 255, 0.1)',
         borderRadius: '16px',
         padding: '36px 32px',
-        boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
-        backdropFilter: 'blur(20px)',
+        boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
+        backdropFilter: 'blur(24px)',
         color: '#f3f4f6'
       }}>
         {/* Header */}
@@ -126,9 +126,9 @@ function Login() {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', margin: '20px 0', gap: '12px' }}>
-          <div style={{ flex: 1, height: '1px', background: 'rgba(255, 255, 255, 0.08)' }} />
+          <div style={{ flex: 1, height: '1px', background: 'rgba(255, 255, 255, 0.15)' }} />
           <span style={{ fontSize: '0.75rem', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Or Sign In</span>
-          <div style={{ flex: 1, height: '1px', background: 'rgba(255, 255, 255, 0.08)' }} />
+          <div style={{ flex: 1, height: '1px', background: 'rgba(255, 255, 255, 0.15)' }} />
         </div>
 
         {error && (
@@ -157,7 +157,7 @@ function Login() {
                 width: '100%',
                 padding: '11px 14px',
                 borderRadius: '8px',
-                background: 'rgba(15, 17, 23, 0.8)',
+                background: 'rgba(255, 255, 255, 0.15)',
                 border: '1px solid rgba(255, 255, 255, 0.12)',
                 color: '#ffffff',
                 fontSize: '0.9rem',
@@ -178,7 +178,7 @@ function Login() {
                 width: '100%',
                 padding: '11px 14px',
                 borderRadius: '8px',
-                background: 'rgba(15, 17, 23, 0.8)',
+                background: 'rgba(255, 255, 255, 0.15)',
                 border: '1px solid rgba(255, 255, 255, 0.12)',
                 color: '#ffffff',
                 fontSize: '0.9rem',
@@ -194,7 +194,7 @@ function Login() {
             style={{
               marginTop: '8px',
               padding: '12px',
-              background: loading ? '#374151' : 'rgba(255, 255, 255, 0.08)',
+              background: loading ? '#374151' : 'rgba(255, 255, 255, 0.15)',
               color: '#ffffff',
               border: '1px solid rgba(255, 255, 255, 0.16)',
               borderRadius: '8px',
@@ -220,7 +220,7 @@ function Login() {
           </span>
         </div>
 
-        <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '0.75rem', color: '#6b7280' }}>
+        <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '0.75rem', color: '#6b7280' }}>
           <ShieldCheck size={14} color="#10b981" />
           <span>Carrier-Grade FIDO2 WebAuthn & JWT Session Escrow</span>
         </div>

@@ -22,7 +22,7 @@ export const SettingsPage: React.FC = () => {
   }
 
   return (
-    <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '32px 24px', display: 'flex', flexDirection: 'column', gap: '28px' }}>
+    <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '16px 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
       
       <div>
         <h1 style={{ fontSize: '1.8rem', fontWeight: 700, color: '#fff', margin: 0 }}>System Settings</h1>
@@ -31,10 +31,10 @@ export const SettingsPage: React.FC = () => {
         </p>
       </div>
 
-      <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      <form onSubmit={handleSave} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         
         {/* API Settings */}
-        <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div className="glass-panel" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#3b82f6' }}>
             <Server size={20} />
             <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff' }}>Backend API Connection</h3>
@@ -57,7 +57,7 @@ export const SettingsPage: React.FC = () => {
         </div>
 
         {/* Sync & Notifications */}
-        <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div className="glass-panel" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#3b82f6' }}>
             <Bell size={20} />
             <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff' }}>Preferences & Sync</h3>

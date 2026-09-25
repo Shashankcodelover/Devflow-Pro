@@ -20,7 +20,7 @@ export const AnalyticsPage: React.FC = () => {
   const completionPct = total > 0 ? Math.round((completed / total) * 100) : 0
 
   return (
-    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px', display: 'flex', flexDirection: 'column', gap: '28px' }}>
+    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '16px 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
       
       <div>
         <h1 style={{ fontSize: '1.8rem', fontWeight: 700, color: '#fff', margin: 0 }}>Workflow Analytics</h1>
@@ -32,7 +32,7 @@ export const AnalyticsPage: React.FC = () => {
       {/* Analytics Overview Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
         
-        <div className="glass-panel" style={{ padding: '24px' }}>
+        <div className="glass-panel" style={{ padding: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
             <span style={{ color: '#9ca3af', fontSize: '0.9rem', fontWeight: 600 }}>Sprint Velocity</span>
             <TrendingUp size={20} style={{ color: '#10b981' }} />
@@ -41,7 +41,7 @@ export const AnalyticsPage: React.FC = () => {
           <div style={{ color: '#10b981', fontSize: '0.8rem', marginTop: '4px' }}>+12% vs last sprint</div>
         </div>
 
-        <div className="glass-panel" style={{ padding: '24px' }}>
+        <div className="glass-panel" style={{ padding: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
             <span style={{ color: '#9ca3af', fontSize: '0.9rem', fontWeight: 600 }}>High Priority Ratio</span>
             <AlertCircle size={20} style={{ color: '#f43f5e' }} />
@@ -52,7 +52,7 @@ export const AnalyticsPage: React.FC = () => {
           <div style={{ color: '#9ca3af', fontSize: '0.8rem', marginTop: '4px' }}>{highPriority} high priority tasks</div>
         </div>
 
-        <div className="glass-panel" style={{ padding: '24px' }}>
+        <div className="glass-panel" style={{ padding: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
             <span style={{ color: '#9ca3af', fontSize: '0.9rem', fontWeight: 600 }}>Average Lead Time</span>
             <Zap size={20} style={{ color: '#3b82f6' }} />
@@ -80,7 +80,7 @@ export const AnalyticsPage: React.FC = () => {
               <span style={{ color: '#f43f5e', fontWeight: 600 }}>High Priority</span>
               <span style={{ color: '#9ca3af' }}>{highPriority} tasks ({total > 0 ? Math.round((highPriority / total) * 100) : 0}%)</span>
             </div>
-            <div style={{ height: '8px', width: '100%', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ height: '8px', width: '100%', background: 'rgba(255, 255, 255, 0.15)', borderRadius: '4px', overflow: 'hidden' }}>
               <div style={{ height: '100%', width: `${total > 0 ? (highPriority / total) * 100 : 0}%`, background: '#f43f5e', borderRadius: '4px' }} />
             </div>
           </div>
@@ -91,7 +91,7 @@ export const AnalyticsPage: React.FC = () => {
               <span style={{ color: '#f59e0b', fontWeight: 600 }}>Medium Priority</span>
               <span style={{ color: '#9ca3af' }}>{mediumPriority} tasks ({total > 0 ? Math.round((mediumPriority / total) * 100) : 0}%)</span>
             </div>
-            <div style={{ height: '8px', width: '100%', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ height: '8px', width: '100%', background: 'rgba(255, 255, 255, 0.15)', borderRadius: '4px', overflow: 'hidden' }}>
               <div style={{ height: '100%', width: `${total > 0 ? (mediumPriority / total) * 100 : 0}%`, background: '#f59e0b', borderRadius: '4px' }} />
             </div>
           </div>
@@ -102,7 +102,7 @@ export const AnalyticsPage: React.FC = () => {
               <span style={{ color: '#3b82f6', fontWeight: 600 }}>Low Priority</span>
               <span style={{ color: '#9ca3af' }}>{lowPriority} tasks ({total > 0 ? Math.round((lowPriority / total) * 100) : 0}%)</span>
             </div>
-            <div style={{ height: '8px', width: '100%', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '4px', overflow: 'hidden' }}>
+            <div style={{ height: '8px', width: '100%', background: 'rgba(255, 255, 255, 0.15)', borderRadius: '4px', overflow: 'hidden' }}>
               <div style={{ height: '100%', width: `${total > 0 ? (lowPriority / total) * 100 : 0}%`, background: '#3b82f6', borderRadius: '4px' }} />
             </div>
           </div>

@@ -139,6 +139,20 @@ export const topologyService = {
     return inMemoryCorridors.length < before;
   },
 
+  update(id: string, data: Partial<ArchitectureCorridor>): ArchitectureCorridor | undefined {
+    const idx = inMemoryCorridors.findIndex((c) => c.id === id);
+    if (idx !== -1) {
+      inMemoryCorridors[idx] = { ...inMemoryCorridors[idx], ...data };
+      return inMemoryCorridors[idx];
+    }
+    return undefined;
+  },
+
+  createBulk(corridors: Partial<ArchitectureCorridor>[]): ArchitectureCorridor[] {
+    const created = corridors.map((c) => this.create(c));
+    return created;
+  },
+
   bulkAdd(corridors: Partial<ArchitectureCorridor>[]): { added: number; total: number } {
     const created = corridors.map((c) => ({
       id: c.id || `corridor-bulk-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,

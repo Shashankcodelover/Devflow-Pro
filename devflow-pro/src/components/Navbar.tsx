@@ -46,9 +46,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTaskModal }) => {
 
   return (
     <header style={{
-      background: 'rgba(22, 25, 34, 0.85)',
-      backdropFilter: 'blur(16px)',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+      background: 'rgba(255, 255, 255, 0.15)',
+      backdropFilter: 'blur(24px)',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
       position: 'sticky',
       top: 0,
       zIndex: 100,

@@ -85,7 +85,7 @@ export default function SprintCopilot() {
         background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(16, 185, 129, 0.1) 100%)',
         border: '1px solid rgba(99, 102, 241, 0.3)',
         borderRadius: '16px',
-        padding: '24px 30px',
+        padding: '16px 30px',
         marginBottom: '28px',
         position: 'relative'
       }}>
@@ -130,8 +130,8 @@ export default function SprintCopilot() {
 
       {/* SECTION 1: COGNITIVE FLOW TELEMETRY HUD */}
       <div style={{
-        background: '#161922', border: '1px solid rgba(255, 255, 255, 0.08)',
-        borderRadius: '16px', padding: '24px', marginBottom: '28px'
+        background: '#161922', border: '1px solid rgba(255, 255, 255, 0.15)',
+        borderRadius: '16px', padding: '16px', marginBottom: '28px'
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
           <h3 style={{ margin: 0, fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -191,7 +191,7 @@ export default function SprintCopilot() {
         </div>
 
         {/* Interactive Telemetry Tuning Bar */}
-        <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+        <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.15)', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
           <div>
             <label style={{ fontSize: '0.75rem', color: '#9ca3af', display: 'block', marginBottom: '6px' }}>
               Coding Velocity: <strong>{wpm} WPM</strong>
@@ -241,8 +241,8 @@ export default function SprintCopilot() {
 
       {/* SECTION 2: AUTONOMOUS AI SPRINT STORY REFINER & CPM DAG */}
       <div style={{
-        background: '#161922', border: '1px solid rgba(255, 255, 255, 0.08)',
-        borderRadius: '16px', padding: '24px'
+        background: '#161922', border: '1px solid rgba(255, 255, 255, 0.15)',
+        borderRadius: '16px', padding: '16px'
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '10px' }}>
           <div>
@@ -263,7 +263,7 @@ export default function SprintCopilot() {
                   handleRefineStory(preset)
                 }}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)',
+                  background: 'rgba(255, 255, 255, 0.15)', border: '1px solid rgba(255, 255, 255, 0.1)',
                   borderRadius: '20px', padding: '5px 12px', fontSize: '0.75rem',
                   color: '#d1d5db', cursor: 'pointer'
                 }}
@@ -349,9 +349,9 @@ export default function SprintCopilot() {
                     style={{
                       background: '#0f1117',
                       borderLeft: isCritical ? '4px solid #fbbf24' : '4px solid #6366f1',
-                      borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-                      borderRight: '1px solid rgba(255, 255, 255, 0.06)',
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+                      borderTop: '1px solid rgba(255, 255, 255, 0.15)',
+                      borderRight: '1px solid rgba(255, 255, 255, 0.15)',
+                      borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
                       borderRadius: '8px', padding: '14px 18px',
                       display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px'
                     }}
@@ -366,7 +366,7 @@ export default function SprintCopilot() {
                             CRITICAL PATH
                           </span>
                         )}
-                        <span style={{ background: 'rgba(255, 255, 255, 0.05)', color: '#9ca3af', fontSize: '0.7rem', padding: '2px 6px', borderRadius: '4px' }}>
+                        <span style={{ background: 'rgba(255, 255, 255, 0.15)', color: '#9ca3af', fontSize: '0.7rem', padding: '2px 6px', borderRadius: '4px' }}>
                           Lead: {node.suggestedLead}
                         </span>
                       </div>
@@ -391,7 +391,7 @@ export default function SprintCopilot() {
                       </div>
                       <span style={{
                         padding: '4px 10px', borderRadius: '6px', fontSize: '0.75rem', fontWeight: 700,
-                        background: node.status === 'COMPLETED' ? 'rgba(16, 185, 129, 0.2)' : node.status === 'IN_PROGRESS' ? 'rgba(99, 102, 241, 0.2)' : 'rgba(255, 255, 255, 0.05)',
+                        background: node.status === 'COMPLETED' ? 'rgba(16, 185, 129, 0.2)' : node.status === 'IN_PROGRESS' ? 'rgba(99, 102, 241, 0.2)' : 'rgba(255, 255, 255, 0.15)',
                         color: node.status === 'COMPLETED' ? '#34d399' : node.status === 'IN_PROGRESS' ? '#818cf8' : '#9ca3af'
                       }}>
                         {node.status}

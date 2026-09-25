@@ -196,7 +196,7 @@ export default function BulkIngestionStudio() {
   };
 
   return (
-    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px', display: 'flex', flexDirection: 'column', gap: '28px' }}>
+    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '16px 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
         <div>
@@ -254,9 +254,9 @@ export default function BulkIngestionStudio() {
               padding: '8px 14px',
               borderRadius: '10px',
               fontSize: '0.8rem',
-              background: 'rgba(255, 255, 255, 0.05)',
+              background: 'rgba(255, 255, 255, 0.15)',
               color: '#9ca3af',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
               cursor: 'pointer'
             }}
           >
@@ -272,8 +272,8 @@ export default function BulkIngestionStudio() {
         gap: '8px',
         padding: '6px',
         borderRadius: '14px',
-        background: 'rgba(22, 25, 34, 0.6)',
-        border: '1px solid rgba(255, 255, 255, 0.08)'
+        background: 'rgba(255, 255, 255, 0.15)',
+        border: '1px solid rgba(255, 255, 255, 0.15)'
       }}>
         {[
           { id: 'tasks', label: 'Sprint Backlog Tasks', icon: FileText },
@@ -314,9 +314,9 @@ export default function BulkIngestionStudio() {
 
       {/* Format Controls */}
       <div style={{
-        background: 'rgba(22, 25, 34, 0.65)',
-        backdropFilter: 'blur(16px)',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
+        background: 'rgba(255, 255, 255, 0.15)',
+        backdropFilter: 'blur(24px)',
+        border: '1px solid rgba(255, 255, 255, 0.15)',
         borderRadius: '14px',
         padding: '14px 20px',
         display: 'flex',
@@ -329,7 +329,7 @@ export default function BulkIngestionStudio() {
           <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', textTransform: 'uppercase' }}>
             Payload Format:
           </span>
-          <div style={{ display: 'flex', gap: '4px', background: 'rgba(15, 17, 23, 0.8)', padding: '4px', borderRadius: '8px' }}>
+          <div style={{ display: 'flex', gap: '4px', background: 'rgba(255, 255, 255, 0.15)', padding: '4px', borderRadius: '8px' }}>
             <button
               onClick={() => handleFormatChange('csv')}
               style={{
@@ -372,14 +372,14 @@ export default function BulkIngestionStudio() {
       {/* Live Monospace Buffer */}
       <div style={{
         background: '#12141c',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
+        border: '1px solid rgba(255, 255, 255, 0.15)',
         borderRadius: '16px',
         overflow: 'hidden'
       }}>
         <div style={{
           padding: '10px 16px',
-          background: 'rgba(255, 255, 255, 0.02)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+          background: 'rgba(255, 255, 255, 0.15)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center'
@@ -412,8 +412,8 @@ export default function BulkIngestionStudio() {
 
         <div style={{
           padding: '14px 20px',
-          background: 'rgba(255, 255, 255, 0.02)',
-          borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+          background: 'rgba(255, 255, 255, 0.15)',
+          borderTop: '1px solid rgba(255, 255, 255, 0.15)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -466,7 +466,7 @@ export default function BulkIngestionStudio() {
           borderLeft: lastResult.success ? '4px solid #10b981' : '4px solid #ef4444',
           borderRadius: '14px',
           padding: '20px',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
           display: 'flex',
           flexDirection: 'column',
           gap: '10px'

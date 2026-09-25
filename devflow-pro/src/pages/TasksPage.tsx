@@ -42,7 +42,7 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
   })
 
   return (
-    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '16px 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
       
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
@@ -79,7 +79,7 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
           
           {/* Status Filter Tabs */}
-          <div style={{ display: 'flex', background: 'rgba(15, 17, 23, 0.6)', padding: '4px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+          <div style={{ display: 'flex', background: 'rgba(255, 255, 255, 0.15)', padding: '4px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
             {(['all', 'pending', 'done'] as const).map((status) => (
               <button
                 key={status}

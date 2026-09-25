@@ -239,7 +239,7 @@ export default function TopologyMeshPage() {
   };
 
   return (
-    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '32px 24px', display: 'flex', flexDirection: 'column', gap: '28px' }}>
+    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '16px 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
       {/* Toast Notification */}
       {toast && (
         <div style={{
@@ -247,7 +247,7 @@ export default function TopologyMeshPage() {
           bottom: '24px',
           right: '24px',
           zIndex: 1000,
-          background: 'rgba(22, 25, 34, 0.95)',
+          background: 'rgba(255, 255, 255, 0.15)',
           border: '1px solid #6366f1',
           boxShadow: '0 8px 32px rgba(99, 102, 241, 0.3)',
           color: '#fff',
@@ -320,9 +320,9 @@ export default function TopologyMeshPage() {
       {/* KPI Telemetry Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
         <div style={{
-          background: 'rgba(22, 25, 34, 0.75)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          background: 'rgba(255, 255, 255, 0.15)',
+          backdropFilter: 'blur(24px)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
           borderLeft: '4px solid #6366f1',
           borderRadius: '14px',
           padding: '20px'
@@ -344,9 +344,9 @@ export default function TopologyMeshPage() {
         </div>
 
         <div style={{
-          background: 'rgba(22, 25, 34, 0.75)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          background: 'rgba(255, 255, 255, 0.15)',
+          backdropFilter: 'blur(24px)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
           borderLeft: '4px solid #10b981',
           borderRadius: '14px',
           padding: '20px'
@@ -367,9 +367,9 @@ export default function TopologyMeshPage() {
         </div>
 
         <div style={{
-          background: 'rgba(22, 25, 34, 0.75)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          background: 'rgba(255, 255, 255, 0.15)',
+          backdropFilter: 'blur(24px)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
           borderLeft: '4px solid #06b6d4',
           borderRadius: '14px',
           padding: '20px'
@@ -390,9 +390,9 @@ export default function TopologyMeshPage() {
         </div>
 
         <div style={{
-          background: 'rgba(22, 25, 34, 0.75)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          background: 'rgba(255, 255, 255, 0.15)',
+          backdropFilter: 'blur(24px)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
           borderLeft: '4px solid #f59e0b',
           borderRadius: '14px',
           padding: '20px'
@@ -415,9 +415,9 @@ export default function TopologyMeshPage() {
 
       {/* Filter and Search Bar */}
       <div style={{
-        background: 'rgba(22, 25, 34, 0.65)',
-        backdropFilter: 'blur(16px)',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
+        background: 'rgba(255, 255, 255, 0.15)',
+        backdropFilter: 'blur(24px)',
+        border: '1px solid rgba(255, 255, 255, 0.15)',
         borderRadius: '14px',
         padding: '16px 20px',
         display: 'flex',
@@ -439,8 +439,8 @@ export default function TopologyMeshPage() {
                 borderRadius: '8px',
                 fontSize: '0.75rem',
                 fontWeight: 600,
-                border: protocolFilter === proto ? '1px solid #6366f1' : '1px solid rgba(255, 255, 255, 0.08)',
-                background: protocolFilter === proto ? 'rgba(99, 102, 241, 0.2)' : 'rgba(255, 255, 255, 0.03)',
+                border: protocolFilter === proto ? '1px solid #6366f1' : '1px solid rgba(255, 255, 255, 0.15)',
+                background: protocolFilter === proto ? 'rgba(99, 102, 241, 0.2)' : 'rgba(255, 255, 255, 0.15)',
                 color: protocolFilter === proto ? '#a5b4fc' : '#9ca3af',
                 cursor: 'pointer'
               }}
@@ -457,8 +457,8 @@ export default function TopologyMeshPage() {
             style={{
               padding: '8px 12px',
               borderRadius: '8px',
-              background: 'rgba(15, 17, 23, 0.8)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              background: 'rgba(255, 255, 255, 0.15)',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
               color: '#fff',
               fontSize: '0.8rem',
               outline: 'none'
@@ -481,8 +481,8 @@ export default function TopologyMeshPage() {
                 width: '100%',
                 padding: '8px 12px 8px 36px',
                 borderRadius: '8px',
-                background: 'rgba(15, 17, 23, 0.8)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                background: 'rgba(255, 255, 255, 0.15)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
                 color: '#fff',
                 fontSize: '0.8rem',
                 outline: 'none'
@@ -505,7 +505,7 @@ export default function TopologyMeshPage() {
 
         {filteredCorridors.length === 0 ? (
           <div style={{
-            background: 'rgba(22, 25, 34, 0.5)',
+            background: 'rgba(255, 255, 255, 0.15)',
             border: '1px dashed rgba(255, 255, 255, 0.1)',
             borderRadius: '16px',
             padding: '48px 24px',
@@ -525,9 +525,9 @@ export default function TopologyMeshPage() {
                 <div
                   key={c.id}
                   style={{
-                    background: 'rgba(22, 25, 34, 0.8)',
-                    backdropFilter: 'blur(16px)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    background: 'rgba(255, 255, 255, 0.15)',
+                    backdropFilter: 'blur(24px)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
                     borderRadius: '16px',
                     padding: '20px',
                     display: 'flex',
@@ -589,8 +589,8 @@ export default function TopologyMeshPage() {
                     gap: '8px',
                     padding: '10px',
                     borderRadius: '10px',
-                    background: 'rgba(15, 17, 23, 0.6)',
-                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    background: 'rgba(255, 255, 255, 0.15)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
                     textAlign: 'center'
                   }}>
                     <div>
@@ -613,7 +613,7 @@ export default function TopologyMeshPage() {
                       <span>SLA Budget: {c.latencyMs}ms / {c.slaTargetMs}ms</span>
                       <span>{latencyPct}%</span>
                     </div>
-                    <div style={{ width: '100%', height: '5px', borderRadius: '9999px', background: 'rgba(255, 255, 255, 0.08)', overflow: 'hidden' }}>
+                    <div style={{ width: '100%', height: '5px', borderRadius: '9999px', background: 'rgba(255, 255, 255, 0.15)', overflow: 'hidden' }}>
                       <div style={{
                         width: `${latencyPct}%`,
                         height: '100%',
@@ -630,7 +630,7 @@ export default function TopologyMeshPage() {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     paddingTop: '10px',
-                    borderTop: '1px solid rgba(255, 255, 255, 0.05)'
+                    borderTop: '1px solid rgba(255, 255, 255, 0.15)'
                   }}>
                     <span style={{ fontSize: '0.7rem', color: '#6b7280', fontFamily: 'monospace' }}>
                       ID: {c.id}
@@ -668,11 +668,11 @@ export default function TopologyMeshPage() {
           position: 'fixed',
           inset: 0,
           background: 'rgba(0, 0, 0, 0.75)',
-          backdropFilter: 'blur(8px)',
+          backdropFilter: 'blur(24px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '24px',
+          padding: '16px',
           zIndex: 1000
         }}>
           <div style={{
@@ -804,7 +804,7 @@ export default function TopologyMeshPage() {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  style={{ padding: '8px 16px', borderRadius: '8px', background: 'rgba(255, 255, 255, 0.05)', color: '#9ca3af', border: 'none', cursor: 'pointer' }}
+                  style={{ padding: '8px 16px', borderRadius: '8px', background: 'rgba(255, 255, 255, 0.15)', color: '#9ca3af', border: 'none', cursor: 'pointer' }}
                 >
                   Cancel
                 </button>
