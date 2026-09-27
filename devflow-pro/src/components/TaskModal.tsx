@@ -49,7 +49,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose }) => {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <PlusCircle size={22} style={{ color: '#3b82f6' }} />
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 600, color: '#fff' }}>Create New Task</h3>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 600, color: '#0f172a' }}>Create New Task</h3>
           </div>
           <button onClick={onClose} className="btn-icon">
             <X size={20} />
@@ -76,7 +76,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose }) => {
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div>
-            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#9ca3af', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#64748b', marginBottom: '6px' }}>
               Task Title
             </label>
             <input
@@ -91,7 +91,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose }) => {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#9ca3af', marginBottom: '6px' }}>
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#64748b', marginBottom: '6px' }}>
                 Priority Level
               </label>
               <select
@@ -106,7 +106,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#9ca3af', marginBottom: '6px' }}>
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#64748b', marginBottom: '6px' }}>
                 Initial Status
               </label>
               <select

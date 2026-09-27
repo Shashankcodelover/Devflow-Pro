@@ -247,10 +247,10 @@ export default function TopologyMeshPage() {
           bottom: '24px',
           right: '24px',
           zIndex: 1000,
-          background: 'rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
           border: '1px solid #6366f1',
           boxShadow: '0 8px 32px rgba(99, 102, 241, 0.3)',
-          color: '#fff',
+          color: '#0f172a',
           padding: '12px 20px',
           borderRadius: '12px',
           fontSize: '0.9rem',
@@ -282,13 +282,13 @@ export default function TopologyMeshPage() {
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981' }} />
               Architecture Topology Mesh V5.0
             </span>
-            <span style={{ color: '#6b7280', fontSize: '0.8rem' }}>Microservice Dependency Mesh</span>
+            <span style={{ color: '#334155', fontSize: '0.8rem' }}>Microservice Dependency Mesh</span>
           </div>
-          <h1 style={{ fontSize: '1.9rem', fontWeight: 800, color: '#fff', margin: 0, display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <h1 style={{ fontSize: '1.9rem', fontWeight: 800, color: '#0f172a', margin: 0, display: 'flex', alignItems: 'center', gap: '12px' }}>
             <Network color="#6366f1" size={32} />
             System Architecture & Dependency Topology Mesh
           </h1>
-          <p style={{ color: '#9ca3af', fontSize: '0.9rem', marginTop: '4px', maxWidth: '680px' }}>
+          <p style={{ color: '#64748b', fontSize: '0.9rem', marginTop: '4px', maxWidth: '680px' }}>
             Real-time telemetry, inter-service protocol channels, and live quality-of-service SLA compliance
             corridors with zero-downtime provisioning and instant link severing.
           </p>
@@ -304,8 +304,8 @@ export default function TopologyMeshPage() {
             borderRadius: '12px',
             fontWeight: 700,
             fontSize: '0.85rem',
-            background: 'linear-gradient(135deg, #6366f1, #3b82f6)',
-            color: '#fff',
+            background: 'var(--accent-blue)',
+            color: '#0f172a',
             border: 'none',
             cursor: 'pointer',
             boxShadow: '0 4px 20px rgba(99, 102, 241, 0.4)',
@@ -320,22 +320,22 @@ export default function TopologyMeshPage() {
       {/* KPI Telemetry Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
         <div style={{
-          background: 'rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
           backdropFilter: 'blur(24px)',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
+          border: '1px solid rgba(0, 0, 0, 0.15)',
           borderLeft: '4px solid #6366f1',
           borderRadius: '14px',
           padding: '20px'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748b', textTransform: 'uppercase' }}>
               Active Corridors
             </span>
             <Layers size={18} color="#6366f1" />
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fff' }}>{active}</span>
-            <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>/ {total} provisioned</span>
+            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0f172a' }}>{active}</span>
+            <span style={{ fontSize: '0.8rem', color: '#64748b' }}>/ {total} provisioned</span>
           </div>
           <p style={{ fontSize: '0.75rem', color: '#10b981', margin: '6px 0 0', display: 'flex', alignItems: 'center', gap: '4px' }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981' }} />
@@ -344,22 +344,22 @@ export default function TopologyMeshPage() {
         </div>
 
         <div style={{
-          background: 'rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
           backdropFilter: 'blur(24px)',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
+          border: '1px solid rgba(0, 0, 0, 0.15)',
           borderLeft: '4px solid #10b981',
           borderRadius: '14px',
           padding: '20px'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748b', textTransform: 'uppercase' }}>
               Mean Latency
             </span>
             <Clock size={18} color="#10b981" />
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fff' }}>{avgLatency}</span>
-            <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>ms RTT</span>
+            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0f172a' }}>{avgLatency}</span>
+            <span style={{ fontSize: '0.8rem', color: '#64748b' }}>ms RTT</span>
           </div>
           <p style={{ fontSize: '0.75rem', color: '#10b981', margin: '6px 0 0' }}>
             Target SLA: &lt; 20ms (Optimal)
@@ -367,45 +367,45 @@ export default function TopologyMeshPage() {
         </div>
 
         <div style={{
-          background: 'rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
           backdropFilter: 'blur(24px)',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
+          border: '1px solid rgba(0, 0, 0, 0.15)',
           borderLeft: '4px solid #06b6d4',
           borderRadius: '14px',
           padding: '20px'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748b', textTransform: 'uppercase' }}>
               SLA Compliance
             </span>
             <ShieldCheck size={18} color="#06b6d4" />
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fff' }}>{slaCompliance}%</span>
+            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0f172a' }}>{slaCompliance}%</span>
             <span style={{ fontSize: '0.8rem', color: '#06b6d4' }}>zero-trust</span>
           </div>
-          <p style={{ fontSize: '0.75rem', color: '#9ca3af', margin: '6px 0 0' }}>
+          <p style={{ fontSize: '0.75rem', color: '#64748b', margin: '6px 0 0' }}>
             Real-time automated failover
           </p>
         </div>
 
         <div style={{
-          background: 'rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
           backdropFilter: 'blur(24px)',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
+          border: '1px solid rgba(0, 0, 0, 0.15)',
           borderLeft: '4px solid #f59e0b',
           borderRadius: '14px',
           padding: '20px'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748b', textTransform: 'uppercase' }}>
               System Throughput
             </span>
             <Zap size={18} color="#f59e0b" />
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fff' }}>{totalThroughput.toLocaleString()}</span>
-            <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>ops/sec</span>
+            <span style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0f172a' }}>{totalThroughput.toLocaleString()}</span>
+            <span style={{ fontSize: '0.8rem', color: '#64748b' }}>ops/sec</span>
           </div>
           <p style={{ fontSize: '0.75rem', color: '#6366f1', margin: '6px 0 0' }}>
             Active event stream load
@@ -415,9 +415,9 @@ export default function TopologyMeshPage() {
 
       {/* Filter and Search Bar */}
       <div style={{
-        background: 'rgba(255, 255, 255, 0.15)',
+        background: 'rgba(0, 0, 0, 0.15)',
         backdropFilter: 'blur(24px)',
-        border: '1px solid rgba(255, 255, 255, 0.15)',
+        border: '1px solid rgba(0, 0, 0, 0.15)',
         borderRadius: '14px',
         padding: '16px 20px',
         display: 'flex',
@@ -427,7 +427,7 @@ export default function TopologyMeshPage() {
         gap: '16px'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748b', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '4px' }}>
             <Filter size={14} /> Protocol:
           </span>
           {['All', 'HTTP/REST', 'gRPC', 'WebSocket', 'Kafka TCP', 'mTLS', 'Postgres Wire'].map((proto) => (
@@ -439,9 +439,9 @@ export default function TopologyMeshPage() {
                 borderRadius: '8px',
                 fontSize: '0.75rem',
                 fontWeight: 600,
-                border: protocolFilter === proto ? '1px solid #6366f1' : '1px solid rgba(255, 255, 255, 0.15)',
-                background: protocolFilter === proto ? 'rgba(99, 102, 241, 0.2)' : 'rgba(255, 255, 255, 0.15)',
-                color: protocolFilter === proto ? '#a5b4fc' : '#9ca3af',
+                border: protocolFilter === proto ? '1px solid #6366f1' : '1px solid rgba(0, 0, 0, 0.15)',
+                background: protocolFilter === proto ? 'rgba(99, 102, 241, 0.2)' : 'rgba(0, 0, 0, 0.15)',
+                color: protocolFilter === proto ? '#a5b4fc' : '#64748b',
                 cursor: 'pointer'
               }}
             >
@@ -457,9 +457,9 @@ export default function TopologyMeshPage() {
             style={{
               padding: '8px 12px',
               borderRadius: '8px',
-              background: 'rgba(255, 255, 255, 0.15)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              color: '#fff',
+              background: 'rgba(0, 0, 0, 0.15)',
+              border: '1px solid rgba(0, 0, 0, 0.15)',
+              color: '#0f172a',
               fontSize: '0.8rem',
               outline: 'none'
             }}
@@ -471,7 +471,7 @@ export default function TopologyMeshPage() {
             <option value="Sandbox">Sandbox</option>
           </select>
           <div style={{ position: 'relative', width: '100%' }}>
-            <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#6b7280' }} />
+            <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#334155' }} />
             <input
               type="text"
               value={searchQuery}
@@ -481,9 +481,9 @@ export default function TopologyMeshPage() {
                 width: '100%',
                 padding: '8px 12px 8px 36px',
                 borderRadius: '8px',
-                background: 'rgba(255, 255, 255, 0.15)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                color: '#fff',
+                background: 'rgba(0, 0, 0, 0.15)',
+                border: '1px solid rgba(0, 0, 0, 0.15)',
+                color: '#0f172a',
                 fontSize: '0.8rem',
                 outline: 'none'
               }}
@@ -495,25 +495,25 @@ export default function TopologyMeshPage() {
       {/* Corridors Grid */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h2 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <h2 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Radio size={16} color="#6366f1" /> Active Topology Corridors ({filteredCorridors.length})
           </h2>
-          <span style={{ fontSize: '0.75rem', color: '#6b7280' }}>
+          <span style={{ fontSize: '0.75rem', color: '#334155' }}>
             Click Sever Link to permanently decouple topology path
           </span>
         </div>
 
         {filteredCorridors.length === 0 ? (
           <div style={{
-            background: 'rgba(255, 255, 255, 0.15)',
-            border: '1px dashed rgba(255, 255, 255, 0.1)',
+            background: 'rgba(0, 0, 0, 0.15)',
+            border: '1px dashed rgba(0, 0, 0, 0.1)',
             borderRadius: '16px',
             padding: '48px 24px',
             textAlign: 'center'
           }}>
-            <Network size={40} color="#6b7280" style={{ margin: '0 auto 12px' }} />
-            <h3 style={{ color: '#fff', fontSize: '1rem', fontWeight: 600 }}>No matching architecture corridors</h3>
-            <p style={{ color: '#9ca3af', fontSize: '0.8rem' }}>Adjust search queries or filters to view available links.</p>
+            <Network size={40} color="#334155" style={{ margin: '0 auto 12px' }} />
+            <h3 style={{ color: '#0f172a', fontSize: '1rem', fontWeight: 600 }}>No matching architecture corridors</h3>
+            <p style={{ color: '#64748b', fontSize: '0.8rem' }}>Adjust search queries or filters to view available links.</p>
           </div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '16px' }}>
@@ -525,9 +525,9 @@ export default function TopologyMeshPage() {
                 <div
                   key={c.id}
                   style={{
-                    background: 'rgba(255, 255, 255, 0.15)',
+                    background: 'rgba(0, 0, 0, 0.15)',
                     backdropFilter: 'blur(24px)',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    border: '1px solid rgba(0, 0, 0, 0.15)',
                     borderRadius: '16px',
                     padding: '20px',
                     display: 'flex',
@@ -549,7 +549,7 @@ export default function TopologyMeshPage() {
                       }}>
                         {c.sourceService}
                       </span>
-                      <ArrowRight size={14} color="#6b7280" />
+                      <ArrowRight size={14} color="#334155" />
                       <span style={{
                         padding: '4px 8px',
                         borderRadius: '6px',
@@ -577,7 +577,7 @@ export default function TopologyMeshPage() {
                   </div>
 
                   {c.description && (
-                    <p style={{ color: '#9ca3af', fontSize: '0.8rem', lineHeight: '1.4', margin: 0 }}>
+                    <p style={{ color: '#64748b', fontSize: '0.8rem', lineHeight: '1.4', margin: 0 }}>
                       {c.description}
                     </p>
                   )}
@@ -589,31 +589,31 @@ export default function TopologyMeshPage() {
                     gap: '8px',
                     padding: '10px',
                     borderRadius: '10px',
-                    background: 'rgba(255, 255, 255, 0.15)',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    background: 'rgba(0, 0, 0, 0.15)',
+                    border: '1px solid rgba(0, 0, 0, 0.15)',
                     textAlign: 'center'
                   }}>
                     <div>
-                      <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: '#6b7280', display: 'block', fontWeight: 700 }}>Protocol</span>
-                      <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#fff' }}>{c.protocol}</span>
+                      <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: '#334155', display: 'block', fontWeight: 700 }}>Protocol</span>
+                      <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#0f172a' }}>{c.protocol}</span>
                     </div>
                     <div>
-                      <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: '#6b7280', display: 'block', fontWeight: 700 }}>RTT Latency</span>
+                      <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: '#334155', display: 'block', fontWeight: 700 }}>RTT Latency</span>
                       <span style={{ fontSize: '0.75rem', fontWeight: 700, color: isDegraded ? '#ef4444' : '#10b981' }}>{c.latencyMs} ms</span>
                     </div>
                     <div>
-                      <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: '#6b7280', display: 'block', fontWeight: 700 }}>Throughput</span>
+                      <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: '#334155', display: 'block', fontWeight: 700 }}>Throughput</span>
                       <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#6366f1' }}>{c.throughputOpsSec} ops/s</span>
                     </div>
                   </div>
 
                   {/* SLA Bar */}
                   <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: '#9ca3af', marginBottom: '4px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: '#64748b', marginBottom: '4px' }}>
                       <span>SLA Budget: {c.latencyMs}ms / {c.slaTargetMs}ms</span>
                       <span>{latencyPct}%</span>
                     </div>
-                    <div style={{ width: '100%', height: '5px', borderRadius: '9999px', background: 'rgba(255, 255, 255, 0.15)', overflow: 'hidden' }}>
+                    <div style={{ width: '100%', height: '5px', borderRadius: '9999px', background: 'rgba(0, 0, 0, 0.15)', overflow: 'hidden' }}>
                       <div style={{
                         width: `${latencyPct}%`,
                         height: '100%',
@@ -630,9 +630,9 @@ export default function TopologyMeshPage() {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     paddingTop: '10px',
-                    borderTop: '1px solid rgba(255, 255, 255, 0.15)'
+                    borderTop: '1px solid rgba(0, 0, 0, 0.15)'
                   }}>
-                    <span style={{ fontSize: '0.7rem', color: '#6b7280', fontFamily: 'monospace' }}>
+                    <span style={{ fontSize: '0.7rem', color: '#334155', fontFamily: 'monospace' }}>
                       ID: {c.id}
                     </span>
                     <button
@@ -676,7 +676,7 @@ export default function TopologyMeshPage() {
           zIndex: 1000
         }}>
           <div style={{
-            background: '#161922',
+            background: '#ffffff',
             border: '1px solid rgba(99, 102, 241, 0.3)',
             borderRadius: '16px',
             maxWidth: '520px',
@@ -686,26 +686,26 @@ export default function TopologyMeshPage() {
           }}>
             <button
               onClick={() => setIsModalOpen(false)}
-              style={{ position: 'absolute', top: '20px', right: '20px', color: '#9ca3af', background: 'none', border: 'none', cursor: 'pointer' }}
+              style={{ position: 'absolute', top: '20px', right: '20px', color: '#64748b', background: 'none', border: 'none', cursor: 'pointer' }}
             >
               <X size={20} />
             </button>
 
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#fff', margin: '0 0 4px' }}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#0f172a', margin: '0 0 4px' }}>
               Provision Architecture Dependency Corridor
             </h3>
-            <p style={{ fontSize: '0.8rem', color: '#9ca3af', margin: '0 0 20px' }}>
+            <p style={{ fontSize: '0.8rem', color: '#64748b', margin: '0 0 20px' }}>
               Deploy low-latency inter-service routing corridor with SLA constraints.
             </p>
 
             <form onSubmit={handleCreate} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                 <div>
-                  <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', display: 'block', marginBottom: '6px' }}>Source Node</label>
+                  <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>Source Node</label>
                   <select
                     value={sourceService}
                     onChange={(e) => setSourceService(e.target.value)}
-                    style={{ width: '100%', padding: '8px', borderRadius: '8px', background: '#0f1117', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#fff', fontSize: '0.8rem' }}
+                    style={{ width: '100%', padding: '8px', borderRadius: '8px', background: '#f8fafc', border: '1px solid rgba(0, 0, 0, 0.1)', color: '#0f172a', fontSize: '0.8rem' }}
                   >
                     {AVAILABLE_SERVICES.map((s) => (
                       <option key={s} value={s}>{s}</option>
@@ -714,11 +714,11 @@ export default function TopologyMeshPage() {
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', display: 'block', marginBottom: '6px' }}>Target Node</label>
+                  <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>Target Node</label>
                   <select
                     value={targetService}
                     onChange={(e) => setTargetService(e.target.value)}
-                    style={{ width: '100%', padding: '8px', borderRadius: '8px', background: '#0f1117', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#fff', fontSize: '0.8rem' }}
+                    style={{ width: '100%', padding: '8px', borderRadius: '8px', background: '#f8fafc', border: '1px solid rgba(0, 0, 0, 0.1)', color: '#0f172a', fontSize: '0.8rem' }}
                   >
                     {AVAILABLE_SERVICES.filter((s) => s !== sourceService).map((s) => (
                       <option key={s} value={s}>{s}</option>
@@ -729,11 +729,11 @@ export default function TopologyMeshPage() {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                 <div>
-                  <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', display: 'block', marginBottom: '6px' }}>Protocol Channel</label>
+                  <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>Protocol Channel</label>
                   <select
                     value={protocol}
                     onChange={(e: any) => setProtocol(e.target.value)}
-                    style={{ width: '100%', padding: '8px', borderRadius: '8px', background: '#0f1117', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#fff', fontSize: '0.8rem' }}
+                    style={{ width: '100%', padding: '8px', borderRadius: '8px', background: '#f8fafc', border: '1px solid rgba(0, 0, 0, 0.1)', color: '#0f172a', fontSize: '0.8rem' }}
                   >
                     <option value="gRPC">gRPC (Binary RPC)</option>
                     <option value="HTTP/REST">HTTP/REST (Standard JSON)</option>
@@ -745,11 +745,11 @@ export default function TopologyMeshPage() {
                 </div>
 
                 <div>
-                  <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', display: 'block', marginBottom: '6px' }}>Environment</label>
+                  <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>Environment</label>
                   <select
                     value={environment}
                     onChange={(e: any) => setEnvironment(e.target.value)}
-                    style={{ width: '100%', padding: '8px', borderRadius: '8px', background: '#0f1117', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#fff', fontSize: '0.8rem' }}
+                    style={{ width: '100%', padding: '8px', borderRadius: '8px', background: '#f8fafc', border: '1px solid rgba(0, 0, 0, 0.1)', color: '#0f172a', fontSize: '0.8rem' }}
                   >
                     <option value="Production">Production Cluster</option>
                     <option value="Staging">Staging Replica</option>
@@ -761,42 +761,42 @@ export default function TopologyMeshPage() {
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                 <div>
-                  <label style={{ fontSize: '0.7rem', color: '#9ca3af', display: 'block', marginBottom: '4px' }}>Latency (ms)</label>
+                  <label style={{ fontSize: '0.7rem', color: '#64748b', display: 'block', marginBottom: '4px' }}>Latency (ms)</label>
                   <input
                     type="number"
                     value={latencyMs}
                     onChange={(e) => setLatencyMs(Number(e.target.value))}
-                    style={{ width: '100%', padding: '6px 8px', borderRadius: '6px', background: '#0f1117', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#fff', fontSize: '0.8rem' }}
+                    style={{ width: '100%', padding: '6px 8px', borderRadius: '6px', background: '#f8fafc', border: '1px solid rgba(0, 0, 0, 0.1)', color: '#0f172a', fontSize: '0.8rem' }}
                   />
                 </div>
                 <div>
-                  <label style={{ fontSize: '0.7rem', color: '#9ca3af', display: 'block', marginBottom: '4px' }}>SLA Target (ms)</label>
+                  <label style={{ fontSize: '0.7rem', color: '#64748b', display: 'block', marginBottom: '4px' }}>SLA Target (ms)</label>
                   <input
                     type="number"
                     value={slaTargetMs}
                     onChange={(e) => setSlaTargetMs(Number(e.target.value))}
-                    style={{ width: '100%', padding: '6px 8px', borderRadius: '6px', background: '#0f1117', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#fff', fontSize: '0.8rem' }}
+                    style={{ width: '100%', padding: '6px 8px', borderRadius: '6px', background: '#f8fafc', border: '1px solid rgba(0, 0, 0, 0.1)', color: '#0f172a', fontSize: '0.8rem' }}
                   />
                 </div>
                 <div>
-                  <label style={{ fontSize: '0.7rem', color: '#9ca3af', display: 'block', marginBottom: '4px' }}>Ops/sec</label>
+                  <label style={{ fontSize: '0.7rem', color: '#64748b', display: 'block', marginBottom: '4px' }}>Ops/sec</label>
                   <input
                     type="number"
                     value={throughputOpsSec}
                     onChange={(e) => setThroughputOpsSec(Number(e.target.value))}
-                    style={{ width: '100%', padding: '6px 8px', borderRadius: '6px', background: '#0f1117', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#fff', fontSize: '0.8rem' }}
+                    style={{ width: '100%', padding: '6px 8px', borderRadius: '6px', background: '#f8fafc', border: '1px solid rgba(0, 0, 0, 0.1)', color: '#0f172a', fontSize: '0.8rem' }}
                   />
                 </div>
               </div>
 
               <div>
-                <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', display: 'block', marginBottom: '6px' }}>Corridor Description</label>
+                <label style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>Corridor Description</label>
                 <input
                   type="text"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="e.g. Dedicated high-urgency fallback corridor"
-                  style={{ width: '100%', padding: '8px', borderRadius: '8px', background: '#0f1117', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#fff', fontSize: '0.8rem' }}
+                  style={{ width: '100%', padding: '8px', borderRadius: '8px', background: '#f8fafc', border: '1px solid rgba(0, 0, 0, 0.1)', color: '#0f172a', fontSize: '0.8rem' }}
                 />
               </div>
 
@@ -804,13 +804,13 @@ export default function TopologyMeshPage() {
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  style={{ padding: '8px 16px', borderRadius: '8px', background: 'rgba(255, 255, 255, 0.15)', color: '#9ca3af', border: 'none', cursor: 'pointer' }}
+                  style={{ padding: '8px 16px', borderRadius: '8px', background: 'rgba(0, 0, 0, 0.15)', color: '#64748b', border: 'none', cursor: 'pointer' }}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  style={{ padding: '8px 20px', borderRadius: '8px', background: '#6366f1', color: '#fff', fontWeight: 600, border: 'none', cursor: 'pointer' }}
+                  style={{ padding: '8px 20px', borderRadius: '8px', background: '#6366f1', color: '#0f172a', fontWeight: 600, border: 'none', cursor: 'pointer' }}
                 >
                   Deploy Corridor
                 </button>

@@ -82,7 +82,7 @@ export default function SprintCopilot() {
     <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '30px 24px', color: '#f3f4f6' }}>
       {/* HERO HEADER */}
       <div style={{
-        background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(16, 185, 129, 0.1) 100%)',
+        background: 'var(--bg-secondary)',
         border: '1px solid rgba(99, 102, 241, 0.3)',
         borderRadius: '16px',
         padding: '16px 30px',
@@ -93,7 +93,7 @@ export default function SprintCopilot() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
               <div style={{
-                background: '#6366f1', color: 'white',
+                background: '#6366f1', color: '#0f172a',
                 width: '36px', height: '36px', borderRadius: '10px',
                 display: 'flex', alignItems: 'center', justifyContent: 'center'
               }}>
@@ -109,7 +109,7 @@ export default function SprintCopilot() {
                 Staff Engineer Grade
               </span>
             </div>
-            <p style={{ margin: 0, color: '#9ca3af', maxWidth: '780px', fontSize: '0.92rem', lineHeight: '1.5' }}>
+            <p style={{ margin: 0, color: '#64748b', maxWidth: '780px', fontSize: '0.92rem', lineHeight: '1.5' }}>
               Real-Time Developer Flow-State Quantifier, Critical Path Method (CPM) Dependency DAG Resolver, 
               and Cryptographic ZK Sprint Velocity Certification. Eliminating context fragmentation and delivery delays.
             </p>
@@ -130,7 +130,7 @@ export default function SprintCopilot() {
 
       {/* SECTION 1: COGNITIVE FLOW TELEMETRY HUD */}
       <div style={{
-        background: '#161922', border: '1px solid rgba(255, 255, 255, 0.15)',
+        background: '#ffffff', border: '1px solid rgba(0, 0, 0, 0.15)',
         borderRadius: '16px', padding: '16px', marginBottom: '28px'
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
@@ -145,35 +145,35 @@ export default function SprintCopilot() {
         {/* 4 Metrics Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px', marginBottom: '20px' }}>
           <div style={{ background: 'rgba(99, 102, 241, 0.08)', border: '1px solid rgba(99, 102, 241, 0.25)', padding: '16px', borderRadius: '12px' }}>
-            <div style={{ fontSize: '0.75rem', color: '#9ca3af', textTransform: 'uppercase', fontWeight: 700 }}>Flow Depth Score</div>
+            <div style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 700 }}>Flow Depth Score</div>
             <div style={{ fontSize: '1.7rem', fontWeight: 800, color: '#34d399', marginTop: '4px' }}>
               {flowMetrics.flowDepthPercent}%
             </div>
-            <div style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '2px' }}>Deep Work Zone (&gt;85% Alpha)</div>
+            <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '2px' }}>Deep Work Zone (&gt;85% Alpha)</div>
           </div>
 
           <div style={{ background: 'rgba(245, 158, 11, 0.08)', border: '1px solid rgba(245, 158, 11, 0.25)', padding: '16px', borderRadius: '12px' }}>
-            <div style={{ fontSize: '0.75rem', color: '#9ca3af', textTransform: 'uppercase', fontWeight: 700 }}>Cognitive Load Index (CLI)</div>
+            <div style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 700 }}>Cognitive Load Index (CLI)</div>
             <div style={{ fontSize: '1.7rem', fontWeight: 800, color: '#fbbf24', marginTop: '4px' }}>
               {flowMetrics.cognitiveLoadIndex}
             </div>
-            <div style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '2px' }}>Optimal Balance [0.30 - 0.55]</div>
+            <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '2px' }}>Optimal Balance [0.30 - 0.55]</div>
           </div>
 
           <div style={{ background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.25)', padding: '16px', borderRadius: '12px' }}>
-            <div style={{ fontSize: '0.75rem', color: '#9ca3af', textTransform: 'uppercase', fontWeight: 700 }}>Context Switch Penalty</div>
+            <div style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 700 }}>Context Switch Penalty</div>
             <div style={{ fontSize: '1.7rem', fontWeight: 800, color: '#f87171', marginTop: '4px' }}>
               -{flowMetrics.contextSwitchPenaltyMinutes} min
             </div>
-            <div style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '2px' }}>Lost cognitive recalibration time</div>
+            <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '2px' }}>Lost cognitive recalibration time</div>
           </div>
 
           <div style={{ background: 'rgba(16, 185, 129, 0.08)', border: '1px solid rgba(16, 185, 129, 0.25)', padding: '16px', borderRadius: '12px' }}>
-            <div style={{ fontSize: '0.75rem', color: '#9ca3af', textTransform: 'uppercase', fontWeight: 700 }}>Burnout Risk Ratio</div>
+            <div style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 700 }}>Burnout Risk Ratio</div>
             <div style={{ fontSize: '1.7rem', fontWeight: 800, color: '#60a5fa', marginTop: '4px' }}>
               {flowMetrics.burnoutRiskRatio}
             </div>
-            <div style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '2px' }}>Safe Sustainable Rhythm</div>
+            <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '2px' }}>Safe Sustainable Rhythm</div>
           </div>
         </div>
 
@@ -191,9 +191,9 @@ export default function SprintCopilot() {
         </div>
 
         {/* Interactive Telemetry Tuning Bar */}
-        <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.15)', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+        <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.15)', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
           <div>
-            <label style={{ fontSize: '0.75rem', color: '#9ca3af', display: 'block', marginBottom: '6px' }}>
+            <label style={{ fontSize: '0.75rem', color: '#64748b', display: 'block', marginBottom: '6px' }}>
               Coding Velocity: <strong>{wpm} WPM</strong>
             </label>
             <input 
@@ -208,7 +208,7 @@ export default function SprintCopilot() {
           </div>
 
           <div>
-            <label style={{ fontSize: '0.75rem', color: '#9ca3af', display: 'block', marginBottom: '6px' }}>
+            <label style={{ fontSize: '0.75rem', color: '#64748b', display: 'block', marginBottom: '6px' }}>
               Active Deep Focus: <strong>{focusMinutes} mins</strong>
             </label>
             <input 
@@ -223,7 +223,7 @@ export default function SprintCopilot() {
           </div>
 
           <div>
-            <label style={{ fontSize: '0.75rem', color: '#9ca3af', display: 'block', marginBottom: '6px' }}>
+            <label style={{ fontSize: '0.75rem', color: '#64748b', display: 'block', marginBottom: '6px' }}>
               External Interruptions: <strong>{interruptions} events</strong>
             </label>
             <input 
@@ -241,7 +241,7 @@ export default function SprintCopilot() {
 
       {/* SECTION 2: AUTONOMOUS AI SPRINT STORY REFINER & CPM DAG */}
       <div style={{
-        background: '#161922', border: '1px solid rgba(255, 255, 255, 0.15)',
+        background: '#ffffff', border: '1px solid rgba(0, 0, 0, 0.15)',
         borderRadius: '16px', padding: '16px'
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '10px' }}>
@@ -249,7 +249,7 @@ export default function SprintCopilot() {
             <h3 style={{ margin: 0, fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Layers size={18} color="#34d399" /> Autonomous AI Sprint Story Refiner & Critical Path (CPM) DAG
             </h3>
-            <p style={{ margin: '4px 0 0 0', fontSize: '0.82rem', color: '#9ca3af' }}>
+            <p style={{ margin: '4px 0 0 0', fontSize: '0.82rem', color: '#64748b' }}>
               Decomposes raw product specs into topological subtasks, computes the critical path bottleneck, and issues a cryptographic sprint passport.
             </p>
           </div>
@@ -263,9 +263,9 @@ export default function SprintCopilot() {
                   handleRefineStory(preset)
                 }}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.15)', border: '1px solid rgba(255, 255, 255, 0.1)',
+                  background: 'rgba(0, 0, 0, 0.15)', border: '1px solid rgba(0, 0, 0, 0.1)',
                   borderRadius: '20px', padding: '5px 12px', fontSize: '0.75rem',
-                  color: '#d1d5db', cursor: 'pointer'
+                  color: '#475569', cursor: 'pointer'
                 }}
               >
                 Preset #{idx + 1}
@@ -284,15 +284,15 @@ export default function SprintCopilot() {
             placeholder="Paste engineering requirement or user story..."
             style={{
               flex: 1, padding: '12px 16px', borderRadius: '10px',
-              background: '#0f1117', border: '1px solid rgba(255, 255, 255, 0.12)',
-              color: 'white', fontSize: '0.92rem'
+              background: '#f8fafc', border: '1px solid rgba(0, 0, 0, 0.12)',
+              color: '#0f172a', fontSize: '0.92rem'
             }}
           />
           <button 
             onClick={() => handleRefineStory(storyInput)}
             disabled={dagLoading}
             style={{
-              background: '#6366f1', color: 'white', border: 'none',
+              background: '#6366f1', color: '#0f172a', border: 'none',
               borderRadius: '10px', padding: '0 24px', fontWeight: 600,
               cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px'
             }}
@@ -311,25 +311,25 @@ export default function SprintCopilot() {
               display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px', marginBottom: '20px'
             }}>
               <div>
-                <span style={{ fontSize: '0.72rem', color: '#9ca3af', textTransform: 'uppercase' }}>Total Story Points</span>
+                <span style={{ fontSize: '0.72rem', color: '#64748b', textTransform: 'uppercase' }}>Total Story Points</span>
                 <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#6366f1', marginTop: '2px' }}>
                   {dagResult.totalStoryPoints} Points
                 </div>
               </div>
               <div>
-                <span style={{ fontSize: '0.72rem', color: '#9ca3af', textTransform: 'uppercase' }}>Critical Path Duration (CPM)</span>
+                <span style={{ fontSize: '0.72rem', color: '#64748b', textTransform: 'uppercase' }}>Critical Path Duration (CPM)</span>
                 <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#fbbf24', marginTop: '2px' }}>
                   {dagResult.criticalPathHours} Engineering Hours
                 </div>
               </div>
               <div>
-                <span style={{ fontSize: '0.72rem', color: '#9ca3af', textTransform: 'uppercase' }}>Circular Deadlocks</span>
+                <span style={{ fontSize: '0.72rem', color: '#64748b', textTransform: 'uppercase' }}>Circular Deadlocks</span>
                 <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#34d399', marginTop: '2px' }}>
                   0 (Acyclic Verified)
                 </div>
               </div>
               <div>
-                <span style={{ fontSize: '0.72rem', color: '#9ca3af', textTransform: 'uppercase' }}>Critical Bottleneck Path</span>
+                <span style={{ fontSize: '0.72rem', color: '#64748b', textTransform: 'uppercase' }}>Critical Bottleneck Path</span>
                 <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#e5e7eb', marginTop: '6px', fontFamily: 'monospace' }}>
                   {dagResult.criticalPath.join(' → ')}
                 </div>
@@ -337,7 +337,7 @@ export default function SprintCopilot() {
             </div>
 
             {/* Subtask Nodes Grid */}
-            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.92rem', color: '#9ca3af', textTransform: 'uppercase' }}>
+            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.92rem', color: '#64748b', textTransform: 'uppercase' }}>
               Topological Task Execution Nodes ({dagResult.nodes.length} Atomic Items):
             </h4>
             <div style={{ display: 'grid', gap: '10px', marginBottom: '22px' }}>
@@ -347,11 +347,11 @@ export default function SprintCopilot() {
                   <div 
                     key={node.id}
                     style={{
-                      background: '#0f1117',
+                      background: '#f8fafc',
                       borderLeft: isCritical ? '4px solid #fbbf24' : '4px solid #6366f1',
-                      borderTop: '1px solid rgba(255, 255, 255, 0.15)',
-                      borderRight: '1px solid rgba(255, 255, 255, 0.15)',
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+                      borderTop: '1px solid rgba(0, 0, 0, 0.15)',
+                      borderRight: '1px solid rgba(0, 0, 0, 0.15)',
+                      borderBottom: '1px solid rgba(0, 0, 0, 0.15)',
                       borderRadius: '8px', padding: '14px 18px',
                       display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px'
                     }}
@@ -366,7 +366,7 @@ export default function SprintCopilot() {
                             CRITICAL PATH
                           </span>
                         )}
-                        <span style={{ background: 'rgba(255, 255, 255, 0.15)', color: '#9ca3af', fontSize: '0.7rem', padding: '2px 6px', borderRadius: '4px' }}>
+                        <span style={{ background: 'rgba(0, 0, 0, 0.15)', color: '#64748b', fontSize: '0.7rem', padding: '2px 6px', borderRadius: '4px' }}>
                           Lead: {node.suggestedLead}
                         </span>
                       </div>
@@ -374,7 +374,7 @@ export default function SprintCopilot() {
                         {node.title}
                       </div>
                       {node.dependencies.length > 0 && (
-                        <div style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '4px' }}>
+                        <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '4px' }}>
                           Depends on: <strong>{node.dependencies.join(', ')}</strong>
                         </div>
                       )}
@@ -391,8 +391,8 @@ export default function SprintCopilot() {
                       </div>
                       <span style={{
                         padding: '4px 10px', borderRadius: '6px', fontSize: '0.75rem', fontWeight: 700,
-                        background: node.status === 'COMPLETED' ? 'rgba(16, 185, 129, 0.2)' : node.status === 'IN_PROGRESS' ? 'rgba(99, 102, 241, 0.2)' : 'rgba(255, 255, 255, 0.15)',
-                        color: node.status === 'COMPLETED' ? '#34d399' : node.status === 'IN_PROGRESS' ? '#818cf8' : '#9ca3af'
+                        background: node.status === 'COMPLETED' ? 'rgba(16, 185, 129, 0.2)' : node.status === 'IN_PROGRESS' ? 'rgba(99, 102, 241, 0.2)' : 'rgba(0, 0, 0, 0.15)',
+                        color: node.status === 'COMPLETED' ? '#34d399' : node.status === 'IN_PROGRESS' ? '#818cf8' : '#64748b'
                       }}>
                         {node.status}
                       </span>
@@ -411,7 +411,7 @@ export default function SprintCopilot() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#34d399', fontWeight: 700, fontSize: '0.88rem' }}>
                   <Lock size={15} /> Cryptographic Sprint Velocity Passport Issued
                 </div>
-                <div style={{ fontFamily: 'monospace', fontSize: '0.82rem', color: '#9ca3af', marginTop: '4px' }}>
+                <div style={{ fontFamily: 'monospace', fontSize: '0.82rem', color: '#64748b', marginTop: '4px' }}>
                   Token: <strong style={{ color: '#e5e7eb' }}>{dagResult.cryptographicSprintPassport}</strong>
                 </div>
               </div>

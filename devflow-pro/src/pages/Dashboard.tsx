@@ -196,7 +196,7 @@ export default function Dashboard() {
         flexWrap: 'wrap',
         gap: '16px',
         padding: '20px 24px',
-        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15))',
+        background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15))',
         borderRadius: '16px',
         border: '1px solid rgba(99, 102, 241, 0.25)',
         backdropFilter: 'blur(24px)',
@@ -212,7 +212,7 @@ export default function Dashboard() {
               alignItems: 'center',
               justifyContent: 'center'
             }}>
-              <Zap size={20} color="#fff" />
+              <Zap size={20} color="#0f172a" />
             </span>
             <h1 style={{ fontSize: '1.6rem', fontWeight: 800, margin: 0, color: '#f9fafb', letterSpacing: '-0.02em' }}>
               DevFlow Executive Engineering HUD
@@ -233,7 +233,7 @@ export default function Dashboard() {
               CLUSTER RESONANCE: OPTIMAL
             </span>
           </div>
-          <p style={{ margin: 0, color: '#9ca3af', fontSize: '0.88rem' }}>
+          <p style={{ margin: 0, color: '#64748b', fontSize: '0.88rem' }}>
             Autonomous Sprint Story Refiner, CPM Critical Path &amp; Real-Time Cognitive Flow-State Architecture
           </p>
         </div>
@@ -247,8 +247,8 @@ export default function Dashboard() {
               alignItems: 'center',
               gap: '6px',
               padding: '8px 14px',
-              background: 'rgba(255, 255, 255, 0.15)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              background: 'rgba(0, 0, 0, 0.15)',
+              border: '1px solid rgba(0, 0, 0, 0.12)',
               borderRadius: '8px',
               color: '#f3f4f6',
               fontSize: '0.82rem',
@@ -265,7 +265,7 @@ export default function Dashboard() {
         
         {/* Card 1: Flow State */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
           border: '1px solid rgba(99, 102, 241, 0.3)',
           borderRadius: '14px',
           padding: '18px 20px',
@@ -273,7 +273,7 @@ export default function Dashboard() {
           flexDirection: 'column',
           gap: '8px'
         }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', color: '#9ca3af', fontSize: '0.82rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b', fontSize: '0.82rem' }}>
             <span>COGNITIVE FLOW DEPTH</span>
             <Brain size={16} color="#6366f1" />
           </div>
@@ -285,7 +285,7 @@ export default function Dashboard() {
 
         {/* Card 2: Monte Carlo Delivery */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
           border: '1px solid rgba(52, 211, 153, 0.3)',
           borderRadius: '14px',
           padding: '18px 20px',
@@ -293,21 +293,21 @@ export default function Dashboard() {
           flexDirection: 'column',
           gap: '8px'
         }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', color: '#9ca3af', fontSize: '0.82rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b', fontSize: '0.82rem' }}>
             <span>MONTE CARLO PROBABILITY</span>
             <TrendingUp size={16} color="#34d399" />
           </div>
           <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#34d399' }}>
             {monteCarlo.onTimeProbabilityPercent}%
           </div>
-          <div style={{ fontSize: '0.78rem', color: '#9ca3af' }}>
+          <div style={{ fontSize: '0.78rem', color: '#64748b' }}>
             p95 Delivery: <strong>{monteCarlo.p95Hours}h</strong> (Budget: {sprintBudgetHours}h)
           </div>
         </div>
 
         {/* Card 3: Interruption Resumption Debt */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
           border: '1px solid rgba(251, 191, 36, 0.3)',
           borderRadius: '14px',
           padding: '18px 20px',
@@ -315,7 +315,7 @@ export default function Dashboard() {
           flexDirection: 'column',
           gap: '8px'
         }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', color: '#9ca3af', fontSize: '0.82rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b', fontSize: '0.82rem' }}>
             <span>RESUMPTION TAX DEBT</span>
             <AlertTriangle size={16} color="#fbbf24" />
           </div>
@@ -329,7 +329,7 @@ export default function Dashboard() {
 
         {/* Card 4: Sprint Tasks Velocity */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
           border: '1px solid rgba(240, 246, 252, 0.1)',
           borderRadius: '14px',
           padding: '18px 20px',
@@ -337,7 +337,7 @@ export default function Dashboard() {
           flexDirection: 'column',
           gap: '8px'
         }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', color: '#9ca3af', fontSize: '0.82rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', color: '#64748b', fontSize: '0.82rem' }}>
             <span>TASK VELOCITY MATRIX</span>
             <CheckCircle2 size={16} color="#a78bfa" />
           </div>
@@ -356,8 +356,8 @@ export default function Dashboard() {
         
         {/* LEFT: MONTE CARLO & INTERRUPT DEBT SIMULATOR */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.15)',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
+          border: '1px solid rgba(0, 0, 0, 0.15)',
           borderRadius: '16px',
           padding: '16px',
           backdropFilter: 'blur(24px)',
@@ -374,14 +374,14 @@ export default function Dashboard() {
             </span>
           </div>
 
-          <p style={{ margin: 0, fontSize: '0.82rem', color: '#9ca3af' }}>
+          <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748b' }}>
             Calculates probability distribution for the 24-hour Critical Path Method (CPM) DAG using Beta-PERT parameters.
           </p>
 
           {/* Budget Slider */}
-          <div style={{ background: 'rgba(255, 255, 255, 0.15)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+          <div style={{ background: 'rgba(0, 0, 0, 0.15)', padding: '16px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.15)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.85rem' }}>
-              <span style={{ color: '#d1d5db' }}>Sprint Budget Horizon:</span>
+              <span style={{ color: '#475569' }}>Sprint Budget Horizon:</span>
               <strong style={{ color: '#6366f1', fontSize: '1rem' }}>{sprintBudgetHours} Hours</strong>
             </div>
             <input 
@@ -393,7 +393,7 @@ export default function Dashboard() {
               onChange={(e) => handleBudgetChange(Number(e.target.value))}
               style={{ width: '100%', accentColor: '#6366f1', cursor: 'pointer' }}
             />
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: '#6b7280', marginTop: '4px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: '#334155', marginTop: '4px' }}>
               <span>16h (Aggressive)</span>
               <span>24h (Critical Path)</span>
               <span>28h (Nominal Buffer)</span>
@@ -403,20 +403,20 @@ export default function Dashboard() {
 
           {/* Confidence Percentiles Grid */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px', textAlign: 'center' }}>
-            <div style={{ background: 'rgba(255, 255, 255, 0.15)', padding: '10px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
-              <div style={{ fontSize: '0.7rem', color: '#9ca3af' }}>p50 (Median)</div>
+            <div style={{ background: 'rgba(0, 0, 0, 0.15)', padding: '10px', borderRadius: '8px', border: '1px solid rgba(0, 0, 0, 0.15)' }}>
+              <div style={{ fontSize: '0.7rem', color: '#64748b' }}>p50 (Median)</div>
               <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f3f4f6', marginTop: '2px' }}>{monteCarlo.p50Hours}h</div>
             </div>
-            <div style={{ background: 'rgba(255, 255, 255, 0.15)', padding: '10px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
-              <div style={{ fontSize: '0.7rem', color: '#9ca3af' }}>p80 Confidence</div>
+            <div style={{ background: 'rgba(0, 0, 0, 0.15)', padding: '10px', borderRadius: '8px', border: '1px solid rgba(0, 0, 0, 0.15)' }}>
+              <div style={{ fontSize: '0.7rem', color: '#64748b' }}>p80 Confidence</div>
               <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#a78bfa', marginTop: '2px' }}>{monteCarlo.p80Hours}h</div>
             </div>
-            <div style={{ background: 'rgba(255, 255, 255, 0.15)', padding: '10px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
-              <div style={{ fontSize: '0.7rem', color: '#9ca3af' }}>p95 Confidence</div>
+            <div style={{ background: 'rgba(0, 0, 0, 0.15)', padding: '10px', borderRadius: '8px', border: '1px solid rgba(0, 0, 0, 0.15)' }}>
+              <div style={{ fontSize: '0.7rem', color: '#64748b' }}>p95 Confidence</div>
               <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#34d399', marginTop: '2px' }}>{monteCarlo.p95Hours}h</div>
             </div>
-            <div style={{ background: 'rgba(255, 255, 255, 0.15)', padding: '10px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
-              <div style={{ fontSize: '0.7rem', color: '#9ca3af' }}>On-Time Odds</div>
+            <div style={{ background: 'rgba(0, 0, 0, 0.15)', padding: '10px', borderRadius: '8px', border: '1px solid rgba(0, 0, 0, 0.15)' }}>
+              <div style={{ fontSize: '0.7rem', color: '#64748b' }}>On-Time Odds</div>
               <div style={{ fontSize: '1.1rem', fontWeight: 700, color: monteCarlo.onTimeProbabilityPercent > 80 ? '#34d399' : '#fbbf24', marginTop: '2px' }}>
                 {monteCarlo.onTimeProbabilityPercent}%
               </div>
@@ -424,8 +424,8 @@ export default function Dashboard() {
           </div>
 
           {/* Histogram Visualizer */}
-          <div style={{ background: 'rgba(255, 255, 255, 0.15)', padding: '14px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
-            <div style={{ fontSize: '0.75rem', color: '#9ca3af', marginBottom: '10px' }}>
+          <div style={{ background: 'rgba(0, 0, 0, 0.15)', padding: '14px', borderRadius: '12px', border: '1px solid rgba(0, 0, 0, 0.15)' }}>
+            <div style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '10px' }}>
               Empirical PERT Simulation Frequency Distribution:
             </div>
             <div style={{ display: 'flex', alignItems: 'flex-end', height: '65px', gap: '8px', paddingBottom: '4px' }}>
@@ -441,7 +441,7 @@ export default function Dashboard() {
                       borderRadius: '4px',
                       opacity: 0.85
                     }} />
-                    <span style={{ fontSize: '0.65rem', color: '#6b7280' }}>{h.bin}</span>
+                    <span style={{ fontSize: '0.65rem', color: '#334155' }}>{h.bin}</span>
                   </div>
                 )
               })}
@@ -449,7 +449,7 @@ export default function Dashboard() {
           </div>
 
           {/* Context Switching Resumption Audit */}
-          <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.15)', paddingTop: '16px' }}>
+          <div style={{ borderTop: '1px solid rgba(0, 0, 0, 0.15)', paddingTop: '16px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
               <span style={{ fontSize: '0.88rem', fontWeight: 700, color: '#f3f4f6', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <Brain size={16} color="#fbbf24" /> Mark-Gudith Resumption Debt Model
@@ -457,17 +457,17 @@ export default function Dashboard() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <button 
                   onClick={() => handleInterruptChange(-1)}
-                  style={{ width: '24px', height: '24px', background: '#1f2430', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>-</button>
+                  style={{ width: '24px', height: '24px', background: '#1f2430', color: '#0f172a', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>-</button>
                 <span style={{ fontSize: '0.85rem', color: '#fbbf24', fontWeight: 700 }}>{interruptionCount} Interrupts</span>
                 <button 
                   onClick={() => handleInterruptChange(1)}
-                  style={{ width: '24px', height: '24px', background: '#1f2430', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>+</button>
+                  style={{ width: '24px', height: '24px', background: '#1f2430', color: '#0f172a', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>+</button>
               </div>
             </div>
-            <div style={{ fontSize: '0.78rem', color: '#9ca3af', marginBottom: '8px' }}>
+            <div style={{ fontSize: '0.78rem', color: '#64748b', marginBottom: '8px' }}>
               {interruptAudit.recommendation}
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', background: 'rgba(255, 255, 255, 0.15)', padding: '8px 12px', borderRadius: '8px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', background: 'rgba(0, 0, 0, 0.15)', padding: '8px 12px', borderRadius: '8px' }}>
               <span>Flow Shield Salvaged: <strong style={{ color: '#34d399' }}>+{interruptAudit.flowShieldSalvagedHours}h</strong></span>
               <span>Savings Value: <strong style={{ color: '#34d399' }}>+${interruptAudit.flowShieldSavingsUsd}</strong></span>
             </div>
@@ -485,7 +485,7 @@ export default function Dashboard() {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Lock size={14} color="#6366f1" />
-              <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>Feasibility Passport:</span>
+              <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Feasibility Passport:</span>
             </div>
             <code style={{ fontSize: '0.75rem', color: '#34d399', background: 'rgba(52, 211, 153, 0.1)', padding: '2px 8px', borderRadius: '4px' }}>
               {monteCarlo.cryptographicFeasibilityPassport}
@@ -496,8 +496,8 @@ export default function Dashboard() {
 
         {/* RIGHT: TASK ENGINE & WORKSTREAM */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.15)',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
+          border: '1px solid rgba(0, 0, 0, 0.15)',
           borderRadius: '16px',
           padding: '16px',
           backdropFilter: 'blur(24px)',
@@ -509,7 +509,7 @@ export default function Dashboard() {
             <h3 style={{ margin: 0, fontSize: '1.15rem', color: '#f9fafb', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <CheckCircle2 size={18} color="#6366f1" /> Real-Time Sprint Task Mesh
             </h3>
-            <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>
+            <span style={{ fontSize: '0.75rem', color: '#64748b' }}>
               {stats.pending} Pending • {stats.done} Done
             </span>
           </div>
@@ -523,8 +523,8 @@ export default function Dashboard() {
               onChange={(e) => setNewTaskTitle(e.target.value)}
               style={{
                 flex: 1,
-                background: 'rgba(255, 255, 255, 0.15)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
+                background: 'rgba(0, 0, 0, 0.15)',
+                border: '1px solid rgba(0, 0, 0, 0.12)',
                 borderRadius: '8px',
                 padding: '10px 14px',
                 color: '#f9fafb',
@@ -536,11 +536,11 @@ export default function Dashboard() {
               value={newTaskPriority}
               onChange={(e) => setNewTaskPriority(e.target.value as any)}
               style={{
-                background: 'rgba(255, 255, 255, 0.15)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
+                background: 'rgba(0, 0, 0, 0.15)',
+                border: '1px solid rgba(0, 0, 0, 0.12)',
                 borderRadius: '8px',
                 padding: '0 10px',
-                color: '#d1d5db',
+                color: '#475569',
                 fontSize: '0.8rem',
                 outline: 'none'
               }}
@@ -559,7 +559,7 @@ export default function Dashboard() {
                 background: 'linear-gradient(135deg, #6366f1, #4f46e5)',
                 border: 'none',
                 borderRadius: '8px',
-                color: '#fff',
+                color: '#0f172a',
                 padding: '0 16px',
                 fontWeight: 600,
                 fontSize: '0.85rem',
@@ -573,13 +573,13 @@ export default function Dashboard() {
           {/* Tasks List */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '420px', overflowY: 'auto', paddingRight: '4px' }}>
             {isLoading && (
-              <div style={{ textAlign: 'center', color: '#9ca3af', padding: '16px 0', fontSize: '0.85rem' }}>
+              <div style={{ textAlign: 'center', color: '#64748b', padding: '16px 0', fontSize: '0.85rem' }}>
                 Synchronizing task telemetry...
               </div>
             )}
 
             {!isLoading && tasks.length === 0 && (
-              <div style={{ textAlign: 'center', color: '#6b7280', padding: '16px 0', fontSize: '0.85rem' }}>
+              <div style={{ textAlign: 'center', color: '#334155', padding: '16px 0', fontSize: '0.85rem' }}>
                 No sprint tasks queued. Create a task above to begin deep work.
               </div>
             )}
@@ -603,7 +603,7 @@ export default function Dashboard() {
                     justifyContent: 'space-between',
                     padding: '12px 14px',
                     background: isDone ? 'rgba(18, 22, 32, 0.4)' : '#121620',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    border: '1px solid rgba(0, 0, 0, 0.15)',
                     borderRadius: '10px',
                     transition: 'all 0.2s ease',
                     opacity: isDone ? 0.65 : 1
@@ -624,7 +624,7 @@ export default function Dashboard() {
                       <CheckCircle2 size={18} color={isDone ? '#34d399' : '#4b5563'} />
                     </button>
                     <span style={{
-                      color: isDone ? '#9ca3af' : '#f3f4f6',
+                      color: isDone ? '#64748b' : '#f3f4f6',
                       fontSize: '0.88rem',
                       fontWeight: 500,
                       textDecoration: isDone ? 'line-through' : 'none',
@@ -655,7 +655,7 @@ export default function Dashboard() {
                         background: 'none',
                         border: 'none',
                         cursor: 'pointer',
-                        color: '#6b7280',
+                        color: '#334155',
                         padding: '4px',
                         display: 'flex',
                         alignItems: 'center'

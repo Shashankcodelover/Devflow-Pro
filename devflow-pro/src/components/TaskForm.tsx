@@ -35,7 +35,7 @@ export default function TaskForm({ onAddTask }: TaskFormProps) {
       </select>
       <button
         type="submit"
-        style={{ padding: '8px 16px', background: '#534AB7', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
+        style={{ padding: '8px 16px', background: '#534AB7', color: '#0f172a', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
       >
         Add Task
       </button>

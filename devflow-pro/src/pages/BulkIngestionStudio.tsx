@@ -216,13 +216,13 @@ export default function BulkIngestionStudio() {
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#818cf8' }} />
               Enterprise ETL Pipeline
             </span>
-            <span style={{ color: '#6b7280', fontSize: '0.8rem' }}>Multi-Entity Batch Ingestion</span>
+            <span style={{ color: '#334155', fontSize: '0.8rem' }}>Multi-Entity Batch Ingestion</span>
           </div>
-          <h1 style={{ fontSize: '1.9rem', fontWeight: 800, color: '#fff', margin: 0, display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <h1 style={{ fontSize: '1.9rem', fontWeight: 800, color: '#0f172a', margin: 0, display: 'flex', alignItems: 'center', gap: '12px' }}>
             <UploadCloud color="#6366f1" size={32} />
             Enterprise Bulk Ingestion Studio
           </h1>
-          <p style={{ color: '#9ca3af', fontSize: '0.9rem', marginTop: '4px', maxWidth: '680px' }}>
+          <p style={{ color: '#64748b', fontSize: '0.9rem', marginTop: '4px', maxWidth: '680px' }}>
             Atomic batch upload for Sprint Tasks, Career Opportunities, Architecture Corridors,
             and Focus Flow Sessions supporting raw CSV schemas and formatted JSON payloads.
           </p>
@@ -254,9 +254,9 @@ export default function BulkIngestionStudio() {
               padding: '8px 14px',
               borderRadius: '10px',
               fontSize: '0.8rem',
-              background: 'rgba(255, 255, 255, 0.15)',
-              color: '#9ca3af',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
+              background: 'rgba(0, 0, 0, 0.15)',
+              color: '#64748b',
+              border: '1px solid rgba(0, 0, 0, 0.15)',
               cursor: 'pointer'
             }}
           >
@@ -272,8 +272,8 @@ export default function BulkIngestionStudio() {
         gap: '8px',
         padding: '6px',
         borderRadius: '14px',
-        background: 'rgba(255, 255, 255, 0.15)',
-        border: '1px solid rgba(255, 255, 255, 0.15)'
+        background: 'rgba(0, 0, 0, 0.15)',
+        border: '1px solid rgba(0, 0, 0, 0.15)'
       }}>
         {[
           { id: 'tasks', label: 'Sprint Backlog Tasks', icon: FileText },
@@ -300,7 +300,7 @@ export default function BulkIngestionStudio() {
                 fontWeight: 700,
                 border: 'none',
                 background: isActive ? '#6366f1' : 'transparent',
-                color: isActive ? '#fff' : '#9ca3af',
+                color: isActive ? '#fff' : '#64748b',
                 cursor: 'pointer',
                 transition: 'all 0.2s'
               }}
@@ -314,9 +314,9 @@ export default function BulkIngestionStudio() {
 
       {/* Format Controls */}
       <div style={{
-        background: 'rgba(255, 255, 255, 0.15)',
+        background: 'rgba(0, 0, 0, 0.15)',
         backdropFilter: 'blur(24px)',
-        border: '1px solid rgba(255, 255, 255, 0.15)',
+        border: '1px solid rgba(0, 0, 0, 0.15)',
         borderRadius: '14px',
         padding: '14px 20px',
         display: 'flex',
@@ -326,10 +326,10 @@ export default function BulkIngestionStudio() {
         gap: '12px'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#9ca3af', textTransform: 'uppercase' }}>
+          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748b', textTransform: 'uppercase' }}>
             Payload Format:
           </span>
-          <div style={{ display: 'flex', gap: '4px', background: 'rgba(255, 255, 255, 0.15)', padding: '4px', borderRadius: '8px' }}>
+          <div style={{ display: 'flex', gap: '4px', background: 'rgba(0, 0, 0, 0.15)', padding: '4px', borderRadius: '8px' }}>
             <button
               onClick={() => handleFormatChange('csv')}
               style={{
@@ -338,7 +338,7 @@ export default function BulkIngestionStudio() {
                 fontSize: '0.75rem',
                 fontWeight: 700,
                 background: format === 'csv' ? '#6366f1' : 'transparent',
-                color: format === 'csv' ? '#fff' : '#9ca3af',
+                color: format === 'csv' ? '#fff' : '#64748b',
                 border: 'none',
                 cursor: 'pointer'
               }}
@@ -353,7 +353,7 @@ export default function BulkIngestionStudio() {
                 fontSize: '0.75rem',
                 fontWeight: 700,
                 background: format === 'json' ? '#6366f1' : 'transparent',
-                color: format === 'json' ? '#fff' : '#9ca3af',
+                color: format === 'json' ? '#fff' : '#64748b',
                 border: 'none',
                 cursor: 'pointer'
               }}
@@ -363,8 +363,8 @@ export default function BulkIngestionStudio() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '0.8rem', color: '#9ca3af' }}>
-          <span>Buffer Lines: <strong style={{ color: '#fff' }}>{lineCount}</strong></span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '0.8rem', color: '#64748b' }}>
+          <span>Buffer Lines: <strong style={{ color: '#0f172a' }}>{lineCount}</strong></span>
           <span>Target: <strong style={{ color: '#818cf8', textTransform: 'capitalize' }}>{activeEntity}</strong></span>
         </div>
       </div>
@@ -372,14 +372,14 @@ export default function BulkIngestionStudio() {
       {/* Live Monospace Buffer */}
       <div style={{
         background: '#12141c',
-        border: '1px solid rgba(255, 255, 255, 0.15)',
+        border: '1px solid rgba(0, 0, 0, 0.15)',
         borderRadius: '16px',
         overflow: 'hidden'
       }}>
         <div style={{
           padding: '10px 16px',
-          background: 'rgba(255, 255, 255, 0.15)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
+          borderBottom: '1px solid rgba(0, 0, 0, 0.15)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center'
@@ -387,7 +387,7 @@ export default function BulkIngestionStudio() {
           <span style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: '#818cf8', display: 'flex', alignItems: 'center', gap: '6px' }}>
             <FileCode size={14} /> syntax_buffer.{format}
           </span>
-          <span style={{ fontSize: '0.7rem', color: '#6b7280' }}>UTF-8 Monospace Parser Buffer</span>
+          <span style={{ fontSize: '0.7rem', color: '#334155' }}>UTF-8 Monospace Parser Buffer</span>
         </div>
 
         <textarea
@@ -412,15 +412,15 @@ export default function BulkIngestionStudio() {
 
         <div style={{
           padding: '14px 20px',
-          background: 'rgba(255, 255, 255, 0.15)',
-          borderTop: '1px solid rgba(255, 255, 255, 0.15)',
+          background: 'rgba(0, 0, 0, 0.15)',
+          borderTop: '1px solid rgba(0, 0, 0, 0.15)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
           gap: '12px'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#9ca3af' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#64748b' }}>
             <CheckCircle2 size={16} color="#10b981" />
             <span>Schema validator ready. Atomic commit with automatic rollback.</span>
           </div>
@@ -436,8 +436,8 @@ export default function BulkIngestionStudio() {
               borderRadius: '10px',
               fontWeight: 700,
               fontSize: '0.85rem',
-              background: 'linear-gradient(135deg, #6366f1, #3b82f6)',
-              color: '#fff',
+              background: 'var(--accent-blue)',
+              color: '#0f172a',
               border: 'none',
               cursor: 'pointer',
               opacity: isProcessing || !buffer.trim() ? 0.6 : 1,
@@ -466,7 +466,7 @@ export default function BulkIngestionStudio() {
           borderLeft: lastResult.success ? '4px solid #10b981' : '4px solid #ef4444',
           borderRadius: '14px',
           padding: '20px',
-          border: '1px solid rgba(255, 255, 255, 0.15)',
+          border: '1px solid rgba(0, 0, 0, 0.15)',
           display: 'flex',
           flexDirection: 'column',
           gap: '10px'
@@ -478,7 +478,7 @@ export default function BulkIngestionStudio() {
               ) : (
                 <AlertTriangle size={20} color="#ef4444" />
               )}
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', margin: 0 }}>
+              <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f172a', margin: 0 }}>
                 {lastResult.success ? 'Batch Ingestion Committed' : 'Ingestion Execution Failed'}
               </h3>
             </div>
@@ -496,7 +496,7 @@ export default function BulkIngestionStudio() {
               </span>
             )}
           </div>
-          <p style={{ color: '#9ca3af', fontSize: '0.85rem', margin: 0 }}>{lastResult.message}</p>
+          <p style={{ color: '#64748b', fontSize: '0.85rem', margin: 0 }}>{lastResult.message}</p>
         </div>
       )}
     </div>

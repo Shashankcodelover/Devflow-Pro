@@ -47,8 +47,8 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
         <div>
-          <h1 style={{ fontSize: '1.8rem', fontWeight: 700, color: '#fff', margin: 0 }}>Task Management</h1>
-          <p style={{ color: '#9ca3af', fontSize: '0.9rem', marginTop: '4px' }}>
+          <h1 style={{ fontSize: '1.8rem', fontWeight: 700, color: '#0f172a', margin: 0 }}>Task Management</h1>
+          <p style={{ color: '#64748b', fontSize: '0.9rem', marginTop: '4px' }}>
             Manage, filter, and track all developer tasks in real-time.
           </p>
         </div>
@@ -64,7 +64,7 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
         
         {/* Search Bar */}
         <div style={{ position: 'relative', width: '320px', maxWidth: '100%' }}>
-          <Search size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#6b7280' }} />
+          <Search size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#334155' }} />
           <input
             type="text"
             placeholder="Search tasks..."
@@ -79,7 +79,7 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
           
           {/* Status Filter Tabs */}
-          <div style={{ display: 'flex', background: 'rgba(255, 255, 255, 0.15)', padding: '4px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+          <div style={{ display: 'flex', background: 'rgba(0, 0, 0, 0.15)', padding: '4px', borderRadius: '8px', border: '1px solid rgba(0, 0, 0, 0.15)' }}>
             {(['all', 'pending', 'done'] as const).map((status) => (
               <button
                 key={status}
@@ -92,7 +92,7 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
                   fontWeight: 600,
                   cursor: 'pointer',
                   background: filterStatus === status ? '#3b82f6' : 'transparent',
-                  color: filterStatus === status ? '#fff' : '#9ca3af',
+                  color: filterStatus === status ? '#fff' : '#64748b',
                   transition: 'all 0.15s ease',
                   textTransform: 'capitalize'
                 }}
@@ -104,7 +104,7 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
 
           {/* Priority Select */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <ListFilter size={16} style={{ color: '#6b7280' }} />
+            <ListFilter size={16} style={{ color: '#334155' }} />
             <select
               value={selectedPriority}
               onChange={(e) => setSelectedPriority(e.target.value)}
@@ -125,9 +125,9 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
       {/* Task List Grid */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         {filteredTasks.length === 0 ? (
-          <div className="glass-panel" style={{ padding: '48px', textAlign: 'center', color: '#9ca3af' }}>
-            <Layers size={36} style={{ color: '#6b7280', marginBottom: '12px' }} />
-            <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '6px' }}>No tasks found</h4>
+          <div className="glass-panel" style={{ padding: '48px', textAlign: 'center', color: '#64748b' }}>
+            <Layers size={36} style={{ color: '#334155', marginBottom: '12px' }} />
+            <h4 style={{ color: '#0f172a', fontSize: '1.1rem', marginBottom: '6px' }}>No tasks found</h4>
             <p style={{ fontSize: '0.9rem' }}>Try tweaking your search or filter settings.</p>
           </div>
         ) : (
@@ -153,7 +153,7 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
                     background: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
-                    color: task.status === 'done' ? '#10b981' : '#6b7280',
+                    color: task.status === 'done' ? '#10b981' : '#334155',
                     transition: 'transform 0.15s ease'
                   }}
                   title={task.status === 'done' ? 'Mark as Pending' : 'Mark as Completed'}
@@ -165,13 +165,13 @@ export const TasksPage: React.FC<TasksPageProps> = ({ onOpenTaskModal }) => {
                   <span style={{
                     fontSize: '1rem',
                     fontWeight: 600,
-                    color: task.status === 'done' ? '#9ca3af' : '#f3f4f6',
+                    color: task.status === 'done' ? '#64748b' : '#f3f4f6',
                     textDecoration: task.status === 'done' ? 'line-through' : 'none'
                   }}>
                     {task.title}
                   </span>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.78rem', color: '#6b7280' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.78rem', color: '#334155' }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                       <Calendar size={13} />
                       {new Date(task.createdAt).toLocaleDateString()}

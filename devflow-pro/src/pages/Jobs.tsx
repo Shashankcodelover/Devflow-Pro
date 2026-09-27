@@ -60,7 +60,7 @@ function Jobs() {
           onChange={e => setSalaryMin(e.target.value)}
           style={{ padding: '8px', borderRadius: '6px', border: '1px solid #ccc', width: '120px' }} />
         <button onClick={handleAdd} disabled={createJob.isPending}
-          style={{ padding: '8px 16px', background: '#534AB7', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>
+          style={{ padding: '8px 16px', background: '#534AB7', color: '#0f172a', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>
           {createJob.isPending ? 'Adding...' : 'Add Job'}
         </button>
       </div>

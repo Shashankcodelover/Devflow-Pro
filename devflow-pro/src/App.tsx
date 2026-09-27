@@ -16,6 +16,7 @@ const Jobs = lazy(() => import('./pages/Jobs'))
 const SprintCopilot = lazy(() => import('./pages/SprintCopilot'))
 const TopologyMeshPage = lazy(() => import('./pages/TopologyMeshPage'))
 const BulkIngestionStudio = lazy(() => import('./pages/BulkIngestionStudio'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 export function App() {
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false)
@@ -23,7 +24,7 @@ export function App() {
   return (
     <TaskProvider>
       <Router>
-        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#0f1117' }}>
+        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#f8fafc' }}>
           <Navbar onOpenTaskModal={() => setIsTaskModalOpen(true)} />
           
           <main style={{ flex: 1 }}>
@@ -34,13 +35,13 @@ export function App() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 minHeight: '50vh',
-                color: '#9ca3af',
+                color: '#64748b',
                 gap: '12px'
               }}>
                 <div style={{
                   width: '32px',
                   height: '32px',
-                  border: '3px solid rgba(255, 255, 255, 0.1)',
+                  border: '3px solid rgba(0, 0, 0, 0.1)',
                   borderTopColor: '#6366f1',
                   borderRadius: '50%',
                   animation: 'spin 0.8s linear infinite'
@@ -60,6 +61,7 @@ export function App() {
                 <Route path="/analytics" element={<ProtectedRoute><AnalyticsPage /></ProtectedRoute>} />
                 <Route path="/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
                 <Route path="/jobs" element={<ProtectedRoute><Jobs /></ProtectedRoute>} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
           </main>

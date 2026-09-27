@@ -51,16 +51,16 @@ function Register() {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '16px 16px',
-      background: 'radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 60%)'
+      background: 'var(--bg-secondary)'
     }}>
       <div style={{
         width: '100%',
         maxWidth: '440px',
         background: 'rgba(22, 27, 38, 0.85)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
         borderRadius: '16px',
         padding: '36px 32px',
-        boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15)',
+        boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(0, 0, 0, 0.15)',
         backdropFilter: 'blur(24px)',
         color: '#f3f4f6'
       }}>
@@ -73,16 +73,16 @@ function Register() {
             width: '48px',
             height: '48px',
             borderRadius: '12px',
-            background: 'linear-gradient(135deg, #6366f1, #3b82f6)',
+            background: 'var(--accent-blue)',
             boxShadow: '0 8px 16px -4px rgba(99, 102, 241, 0.5)',
             marginBottom: '14px'
           }}>
-            <Zap size={26} color="#ffffff" />
+            <Zap size={26} color="#0f172a" />
           </div>
           <h2 style={{ fontSize: '1.6rem', fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 6px 0' }}>
             Create Org <span style={{ color: '#818cf8' }}>Account</span>
           </h2>
-          <p style={{ margin: 0, fontSize: '0.88rem', color: '#9ca3af' }}>
+          <p style={{ margin: 0, fontSize: '0.88rem', color: '#64748b' }}>
             Join the High-Velocity DevFlow Pro Fleet
           </p>
         </div>
@@ -100,8 +100,8 @@ function Register() {
             style={{
               width: '100%',
               padding: '10px 16px',
-              background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-              color: '#ffffff',
+              background: 'var(--accent-blue)',
+              color: '#0f172a',
               border: 'none',
               borderRadius: '8px',
               fontWeight: 600,
@@ -134,7 +134,7 @@ function Register() {
 
         <form onSubmit={e => { e.preventDefault(); handleRegister(); }} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', color: '#9ca3af', marginBottom: '6px' }}>Staff Engineer / Org Name</label>
+            <label style={{ display: 'block', fontSize: '0.8rem', color: '#64748b', marginBottom: '6px' }}>Staff Engineer / Org Name</label>
             <input
               placeholder="e.g. Alex Chen"
               value={name}
@@ -143,9 +143,9 @@ function Register() {
                 width: '100%',
                 padding: '11px 14px',
                 borderRadius: '8px',
-                background: 'rgba(255, 255, 255, 0.15)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                color: '#ffffff',
+                background: 'rgba(0, 0, 0, 0.15)',
+                border: '1px solid rgba(0, 0, 0, 0.12)',
+                color: '#0f172a',
                 fontSize: '0.9rem',
                 outline: 'none',
                 boxSizing: 'border-box'
@@ -154,7 +154,7 @@ function Register() {
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', color: '#9ca3af', marginBottom: '6px' }}>Work Email</label>
+            <label style={{ display: 'block', fontSize: '0.8rem', color: '#64748b', marginBottom: '6px' }}>Work Email</label>
             <input
               type="email"
               placeholder="alex@enterprise.io"
@@ -164,9 +164,9 @@ function Register() {
                 width: '100%',
                 padding: '11px 14px',
                 borderRadius: '8px',
-                background: 'rgba(255, 255, 255, 0.15)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                color: '#ffffff',
+                background: 'rgba(0, 0, 0, 0.15)',
+                border: '1px solid rgba(0, 0, 0, 0.12)',
+                color: '#0f172a',
                 fontSize: '0.9rem',
                 outline: 'none',
                 boxSizing: 'border-box'
@@ -175,7 +175,7 @@ function Register() {
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', color: '#9ca3af', marginBottom: '6px' }}>Password (min 6 chars)</label>
+            <label style={{ display: 'block', fontSize: '0.8rem', color: '#64748b', marginBottom: '6px' }}>Password (min 6 chars)</label>
             <input
               type="password"
               placeholder="••••••••••••"
@@ -185,9 +185,9 @@ function Register() {
                 width: '100%',
                 padding: '11px 14px',
                 borderRadius: '8px',
-                background: 'rgba(255, 255, 255, 0.15)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                color: '#ffffff',
+                background: 'rgba(0, 0, 0, 0.15)',
+                border: '1px solid rgba(0, 0, 0, 0.12)',
+                color: '#0f172a',
                 fontSize: '0.9rem',
                 outline: 'none',
                 boxSizing: 'border-box'
@@ -201,9 +201,9 @@ function Register() {
             style={{
               marginTop: '8px',
               padding: '12px',
-              background: loading ? '#374151' : 'rgba(255, 255, 255, 0.15)',
-              color: '#ffffff',
-              border: '1px solid rgba(255, 255, 255, 0.16)',
+              background: loading ? '#374151' : 'rgba(0, 0, 0, 0.15)',
+              color: '#0f172a',
+              border: '1px solid rgba(0, 0, 0, 0.16)',
               borderRadius: '8px',
               cursor: loading ? 'not-allowed' : 'pointer',
               fontWeight: 600,
@@ -215,9 +215,9 @@ function Register() {
             }}>
             {loading ? 'Creating Organization...' : 'Create Org Account'}
           </button>
-        </form>
+        <div style={{ marginTop: '16px', textAlign: 'center', fontSize: '0.875rem' }}><a href='/terms' style={{ color: 'var(--text-muted)', marginRight: '16px' }}>Terms of Service</a><a href='/privacy' style={{ color: 'var(--text-muted)' }}>Privacy Policy</a></div></form>
 
-        <div style={{ marginTop: '22px', textAlign: 'center', fontSize: '0.84rem', color: '#9ca3af' }}>
+        <div style={{ marginTop: '22px', textAlign: 'center', fontSize: '0.84rem', color: '#64748b' }}>
           Have an account?{' '}
           <span
             style={{ color: '#818cf8', cursor: 'pointer', fontWeight: 500, textDecoration: 'underline' }}
@@ -226,7 +226,7 @@ function Register() {
           </span>
         </div>
 
-        <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '0.75rem', color: '#6b7280' }}>
+        <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(0, 0, 0, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '0.75rem', color: '#334155' }}>
           <ShieldCheck size={14} color="#10b981" />
           <span>SOC2 Type II & WebAuthn Compliant Fleet</span>
         </div>
@@ -236,3 +236,4 @@ function Register() {
 }
 
 export default Register
+

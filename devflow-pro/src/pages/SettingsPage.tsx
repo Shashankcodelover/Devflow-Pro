@@ -25,8 +25,8 @@ export const SettingsPage: React.FC = () => {
     <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '16px 24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
       
       <div>
-        <h1 style={{ fontSize: '1.8rem', fontWeight: 700, color: '#fff', margin: 0 }}>System Settings</h1>
-        <p style={{ color: '#9ca3af', fontSize: '0.9rem', marginTop: '4px' }}>
+        <h1 style={{ fontSize: '1.8rem', fontWeight: 700, color: '#0f172a', margin: 0 }}>System Settings</h1>
+        <p style={{ color: '#64748b', fontSize: '0.9rem', marginTop: '4px' }}>
           Configure API endpoints, background synchronization, and preferences.
         </p>
       </div>
@@ -37,11 +37,11 @@ export const SettingsPage: React.FC = () => {
         <div className="glass-panel" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#3b82f6' }}>
             <Server size={20} />
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff' }}>Backend API Connection</h3>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#0f172a' }}>Backend API Connection</h3>
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#9ca3af', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, color: '#64748b', marginBottom: '6px' }}>
               Express API Base Endpoint
             </label>
             <input
@@ -50,7 +50,7 @@ export const SettingsPage: React.FC = () => {
               onChange={(e) => setApiUrl(e.target.value)}
               className="input-field"
             />
-            <div style={{ fontSize: '0.78rem', color: '#6b7280', marginTop: '6px' }}>
+            <div style={{ fontSize: '0.78rem', color: '#334155', marginTop: '6px' }}>
               Status: {error ? <span style={{ color: '#f59e0b' }}>Offline (Local Fallback Active)</span> : <span style={{ color: '#10b981' }}>Live & Connected</span>}
             </div>
           </div>
@@ -60,13 +60,13 @@ export const SettingsPage: React.FC = () => {
         <div className="glass-panel" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#3b82f6' }}>
             <Bell size={20} />
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#fff' }}>Preferences & Sync</h3>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#0f172a' }}>Preferences & Sync</h3>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div>
               <div style={{ fontWeight: 600, color: '#f3f4f6', fontSize: '0.95rem' }}>Auto-Sync Tasks</div>
-              <div style={{ fontSize: '0.8rem', color: '#9ca3af' }}>Automatically poll Express backend for changes</div>
+              <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Automatically poll Express backend for changes</div>
             </div>
             <input
               type="checkbox"
@@ -79,7 +79,7 @@ export const SettingsPage: React.FC = () => {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div>
               <div style={{ fontWeight: 600, color: '#f3f4f6', fontSize: '0.95rem' }}>Desktop Notifications</div>
-              <div style={{ fontSize: '0.8rem', color: '#9ca3af' }}>Get notified when high-priority tasks are added</div>
+              <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Get notified when high-priority tasks are added</div>
             </div>
             <input
               type="checkbox"

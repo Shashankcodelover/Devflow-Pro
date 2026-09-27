@@ -46,9 +46,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTaskModal }) => {
 
   return (
     <header style={{
-      background: 'rgba(255, 255, 255, 0.15)',
+      background: 'rgba(0, 0, 0, 0.15)',
       backdropFilter: 'blur(24px)',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+      borderBottom: '1px solid rgba(0, 0, 0, 0.15)',
       position: 'sticky',
       top: 0,
       zIndex: 100,
@@ -72,16 +72,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTaskModal }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#fff',
+            color: '#0f172a',
             boxShadow: '0 0 15px rgba(168, 85, 247, 0.4)'
           }}>
             <Zap size={22} />
           </div>
           <div>
-            <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em' }}>
+            <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0f172a', letterSpacing: '-0.02em' }}>
               DevFlow<span style={{ color: '#3b82f6' }}>.Pro</span>
             </span>
-            <div style={{ fontSize: '0.68rem', color: '#9ca3af', marginTop: '-2px' }}>
+            <div style={{ fontSize: '0.68rem', color: '#64748b', marginTop: '-2px' }}>
               Developer Workflow Suite
             </div>
           </div>
@@ -102,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTaskModal }) => {
                     padding: '8px 14px',
                     borderRadius: '8px',
                     background: isActive ? 'rgba(168, 85, 247, 0.15)' : 'transparent',
-                    color: isActive ? '#3b82f6' : '#9ca3af',
+                    color: isActive ? '#3b82f6' : '#64748b',
                     fontWeight: isActive ? 600 : 500,
                     border: isActive ? '1px solid rgba(168, 85, 247, 0.3)' : '1px solid transparent',
                     transition: 'all 0.2s ease'
