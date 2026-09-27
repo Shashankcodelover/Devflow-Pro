@@ -209,6 +209,27 @@ function Login() {
             }}>
             {loading ? 'Authenticating...' : 'Sign In with Password'}
           </button>
+          
+          <button
+            type="button"
+            onClick={handleInstantDemo}
+            style={{
+              padding: '12px',
+              background: 'var(--accent-blue)',
+              color: '#0f172a',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontWeight: 600,
+              fontSize: '0.9rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              transition: 'all 0.15s ease'
+            }}>
+            Demo
+          </button>
         <div style={{ marginTop: '16px', textAlign: 'center', fontSize: '0.875rem' }}><a href='/terms' style={{ color: 'var(--text-muted)', marginRight: '16px' }}>Terms of Service</a><a href='/privacy' style={{ color: 'var(--text-muted)' }}>Privacy Policy</a></div></form>
 
         <div style={{ marginTop: '22px', textAlign: 'center', fontSize: '0.84rem', color: '#64748b' }}>
