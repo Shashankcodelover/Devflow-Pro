@@ -16,6 +16,7 @@ const Jobs = lazy(() => import('./pages/Jobs'))
 const SprintCopilot = lazy(() => import('./pages/SprintCopilot'))
 const TopologyMeshPage = lazy(() => import('./pages/TopologyMeshPage'))
 const BulkIngestionStudio = lazy(() => import('./pages/BulkIngestionStudio'))
+const LandingPage = lazy(() => import('./pages/LandingPage'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 export function App() {
@@ -52,7 +53,7 @@ export function App() {
               <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                <Route path="/" element={<LandingPage />} />
                 <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path="/copilot" element={<ProtectedRoute><SprintCopilot /></ProtectedRoute>} />
                 <Route path="/topology" element={<ProtectedRoute><TopologyMeshPage /></ProtectedRoute>} />
